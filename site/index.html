@@ -64,11 +64,11 @@
     .hero-name-wrap { overflow: hidden; }
     .hero-name { display: block; font-size: clamp(1.5rem, 8vw, 8rem); font-weight: 700; line-height: .92; letter-spacing: -.03em; color: var(--text); white-space: nowrap; opacity: 0; transform: translateY(60px); animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .4s forwards; }
     
-    .hero-divider { display: flex; align-items: center; gap: 20px; margin: 24px 0 24px; opacity: 0; transform: translateY(24px); animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .65s forwards; flex-wrap: wrap; }
+    .hero-divider { display: flex; align-items: center; gap: 20px; margin: 40px 0 36px; opacity: 0; transform: translateY(24px); animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .65s forwards; flex-wrap: wrap; }
     .hero-divider-line { width: 40px; height: 1px; background: var(--accent); flex-shrink: 0; }
     .hero-chips { display: flex; flex-wrap: wrap; gap: 10px; }
     .hero-chip { font-family: 'Space Mono', monospace; font-size: 17px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); background: transparent; border: 1px solid rgba(45,212,191,.35); padding: 6px 14px; }
-    .hero-statement { font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 300; color: var(--text-2); max-width: 40ch; line-height: 1.6; overflow-wrap: break-word; opacity: 0; transform: translateY(24px); animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .75s forwards; margin-top: 40px; }
+    .hero-statement { font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 300; color: var(--text-2); max-width: 40ch; line-height: 1.6; overflow-wrap: break-word; opacity: 0; transform: translateY(24px); animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .75s forwards; }
     .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0; animation: scrollFadeIn 1s ease 1.4s forwards; cursor: pointer; background: none; border: none; padding: 8px; }
     .scroll-indicator:hover .scroll-label { color: var(--accent); }
     .scroll-indicator:hover .scroll-circle { border-color: var(--accent); }
@@ -320,6 +320,15 @@
         <div class="hero-content">
           <p class="hero-label" data-key="hero-label" data-singleline="true">Senior Environmental Analyst</p>
           <div class="hero-name-wrap"><h1 class="hero-name" data-key="hero-name" data-singleline="true">KOO SOYEON</h1></div>
+          <div class="hero-divider">
+            <div class="hero-divider-line"></div>
+            <div class="hero-chips" id="hero-chips">
+              <span class="hero-chip" data-key="chip-1" data-singleline="true">Air Quality</span>
+              <span class="hero-chip" data-key="chip-2" data-singleline="true">Industrial Emissions</span>
+              <span class="hero-chip" data-key="chip-3" data-singleline="true">Compliance</span>
+              <button class="add-chip-btn" id="add-chip-btn">+ Tag</button>
+            </div>
+          </div>
           <p class="hero-statement" data-key="hero-statement">8+ years at the intersection of environmental science and industrial compliance — driven by curiosity, precision, and a genuine love for the work.</p>
         </div>
       </div>
