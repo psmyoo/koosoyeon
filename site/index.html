@@ -240,9 +240,13 @@
       .glance-val { font-size: 16px; }
       .about-body { font-size: 15px; }
       .about-lead { font-size: clamp(1.25rem, 5vw, 1.7rem); }
-      .cert-card { gap: 0; padding: 20px 0; }
-      .cert-icon-wrap { display: none; }
-      .cert-status { display: none; }
+      .cert-card { display: grid; grid-template-areas: "icon content" "icon status"; grid-template-columns: 28px 1fr; column-gap: 12px; row-gap: 4px; padding: 20px 0; align-items: center; }
+      .cert-icon-wrap { grid-area: icon; width: 28px; height: 28px; border: none; align-self: center; justify-content: flex-start; }
+      .cert-content { grid-area: content; }
+      .cert-status { grid-area: status; justify-content: flex-start; }
+      .cert-card-name { font-size: clamp(15px, 4.5vw, 18px); }
+      .cert-card-domain { font-size: clamp(11px, 2.8vw, 13px); }
+      .cert-badge { font-size: clamp(11px, 2.8vw, 13px); }
     }
     @media (max-width: 640px) {
       .edit-bar { left: 16px; right: 16px; width: auto; transform: translateY(120px); flex-wrap: wrap; justify-content: center; padding: 12px 14px; bottom: 16px; }
@@ -256,9 +260,13 @@
       .hero-statement { font-size: 1rem; line-height: 1.7; }
       .contact-sub { max-width: 100%; }
       .mth-acronym { font-size: clamp(1.6rem, 8vw, 3rem); }
-      .cert-card { gap: 0; padding: 22px 0; }
-      .cert-icon-wrap { display: none; }
-      .cert-status { display: none; }
+      .cert-card { display: grid; grid-template-areas: "icon content" "icon status"; grid-template-columns: 32px 1fr; column-gap: 14px; row-gap: 4px; padding: 22px 0; align-items: center; }
+      .cert-icon-wrap { grid-area: icon; width: 32px; height: 32px; border: none; align-self: center; justify-content: flex-start; }
+      .cert-content { grid-area: content; }
+      .cert-status { grid-area: status; justify-content: flex-start; }
+      .cert-card-name { font-size: clamp(15px, 4.5vw, 19px); }
+      .cert-card-domain { font-size: clamp(11px, 3vw, 14px); }
+      .cert-badge { font-size: clamp(11px, 3vw, 14px); }
     }
     @media (min-width: 640px) { .about-grid { gap: 48px; } }
   </style>
