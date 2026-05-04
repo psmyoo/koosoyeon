@@ -28,15 +28,14 @@
 
     /* ── Navigation ── */
     #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .5s, border-color .5s; border-bottom: 1px solid transparent; }
-    #nav.scrolled { background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-color: var(--border); }
-    #nav.menu-open { background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-color: var(--border); }
+    #nav.scrolled, #nav.menu-open { background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-color: var(--border); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .nav-logo { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; letter-spacing: .25em; color: var(--accent); text-decoration: none; transition: color .2s; position: relative; z-index: 60; }
     .nav-logo:hover { color: #fff; }
     .nav-links { display: none; list-style: none; gap: 32px; }
     @media (min-width: 768px) { .nav-links { display: flex; } }
     .nav-links a { font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color .2s; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
     .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 60; }
     @media (min-width: 768px) { .hamburger { display: none; } }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); }
@@ -50,8 +49,9 @@
     .mob-close::after { transform: rotate(-45deg); }
     .mob-links { list-style: none; }
     .mob-links li { margin-bottom: 32px; }
-    .mob-links a { font-family: 'Space Mono', monospace; font-size: clamp(1.1rem, 5.5vw, 1.8rem); letter-spacing: .1em; text-transform: uppercase; color: var(--text); text-decoration: none; transition: color .2s; display: flex; align-items: center; padding: 8px 0; min-height: 44px; }
+    .mob-links a { font-family: 'Space Mono', monospace; font-size: clamp(1.1rem, 5.5vw, 1.8rem); letter-spacing: .1em; text-transform: uppercase; color: var(--text); text-decoration: none; transition: color .2s; display: flex; align-items: center; min-height: 44px; padding: 8px 0; }
     .mob-links a:hover { color: var(--accent); }
+    .mob-links a.active { color: var(--accent); }
     .mob-footer { position: absolute; bottom: 40px; left: 32px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #2A2A2A; }
 
     /* ── Hero ── */
