@@ -95,7 +95,13 @@
     .about-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
     @media (min-width: 1024px) { .about-grid { grid-template-columns: 1fr 380px; gap: 96px; } }
     .about-lead { font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 300; line-height: 1.3; letter-spacing: -.01em; color: var(--text); margin-bottom: 40px; }
-    .about-body { font-size: 17px; color: var(--text-2); line-height: 1.75; font-weight: 300; max-width: 680px; }
+    .about-body { font-size: 18px; color: var(--text-2); line-height: 1.75; font-weight: 300; max-width: 680px; }
+    .about-flow { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
+    .flow-step { display: flex; align-items: flex-start; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-num { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: .15em; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+    .flow-label { font-size: 17px; color: var(--text); font-weight: 400; letter-spacing: -.01em; }
+    .flow-sub { font-size: 15px; color: var(--text-3); margin-top: 3px; font-weight: 300; }
     .glance { border: 1px solid var(--border); padding: 20px; background: #161616; }
     @media (min-width: 640px) { .glance { padding: 32px; } }
     .glance-hd { font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); margin-bottom: 32px; }
@@ -238,7 +244,7 @@
       .container { padding: 0 20px; }
       .sec-label { margin-bottom: 28px; }
       .glance-val { font-size: 16px; }
-      .about-body { font-size: 15px; }
+      .about-body { font-size: 16px; }
       .about-lead { font-size: clamp(1.25rem, 5vw, 1.7rem); }
       .cert-card { display: grid; grid-template-areas: "icon content" "icon status"; grid-template-columns: 28px 1fr; column-gap: 12px; row-gap: 4px; padding: 20px 0; align-items: center; }
       .cert-icon-wrap { grid-area: icon; width: 28px; height: 28px; border: none; align-self: center; justify-content: flex-start; }
@@ -256,7 +262,7 @@
       .login-inp { font-size: 16px; }
       .hero-chips { gap: 6px; }
       .hero-chip { font-size: 14px; }
-      .about-body { font-size: 15px; }
+      .about-body { font-size: 16px; }
       .hero-statement { font-size: 1rem; line-height: 1.7; }
       .contact-sub { max-width: 100%; }
       .mth-acronym { font-size: clamp(1.6rem, 8vw, 3rem); }
@@ -345,7 +351,28 @@
         <div class="about-grid">
           <div>
             <p class="about-lead fade-up d1" data-key="about-lead">Koo Soyeon is a Senior Environmental Analyst with over eight years of experience in air quality monitoring and pollutant analysis.</p>
-            <p class="about-body fade-up d2" data-key="about-body">Specializing in industrial emissions and ambient air assessment, she applies rigorous analytical methodologies to deliver data that withstands regulatory scrutiny. Her work spans the full measurement lifecycle — from instrument calibration and sample collection through laboratory analysis, quality assurance, and compliance reporting.</p>
+            <div class="about-flow fade-up d2" aria-label="Measurement lifecycle">
+              <div class="flow-step">
+                <span class="flow-num">01</span>
+                <div><div class="flow-label">Instrument Calibration</div><div class="flow-sub">Baseline validation and instrument readiness</div></div>
+              </div>
+              <div class="flow-step">
+                <span class="flow-num">02</span>
+                <div><div class="flow-label">Sample Collection</div><div class="flow-sub">Stack emissions and ambient air sampling</div></div>
+              </div>
+              <div class="flow-step">
+                <span class="flow-num">03</span>
+                <div><div class="flow-label">Laboratory Analysis</div><div class="flow-sub">Quantitative pollutant detection and speciation</div></div>
+              </div>
+              <div class="flow-step">
+                <span class="flow-num">04</span>
+                <div><div class="flow-label">QA / QC</div><div class="flow-sub">Data integrity checks and method validation</div></div>
+              </div>
+              <div class="flow-step">
+                <span class="flow-num">05</span>
+                <div><div class="flow-label">Compliance Reporting</div><div class="flow-sub">Regulatory-grade documentation and submissions</div></div>
+              </div>
+            </div>
           </div>
           <div class="glance fade-up d3">
             <p class="glance-hd">At a glance</p>
