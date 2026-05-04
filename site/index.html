@@ -166,9 +166,15 @@
     .li-url { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .15em; color: #2A2A2A; margin-top: 12px; }
 
     /* ── Footer ── */
-    footer { border-top: 1px solid var(--border); padding: 28px 0; }
-    .footer-inner { display: flex; flex-direction: column; gap: 6px; }
-    @media (min-width: 640px) { .footer-inner { flex-direction: row; align-items: center; justify-content: space-between; } }
+    footer { border-top: 1px solid var(--border); padding: 56px 0 28px; }
+    @media (min-width: 768px) { footer { padding: 80px 0 32px; } }
+    @media (min-width: 1024px) { footer { padding: 96px 0 32px; } }
+    .footer-top { display: grid; grid-template-columns: 1fr; gap: 32px; padding-bottom: 48px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+    @media (min-width: 1024px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; padding-bottom: 64px; margin-bottom: 32px; } }
+    .footer-contact-right { display: flex; flex-direction: column; }
+    @media (min-width: 1024px) { .footer-contact-right { align-items: flex-end; } }
+    .footer-bottom { display: flex; flex-direction: column; gap: 6px; }
+    @media (min-width: 640px) { .footer-bottom { flex-direction: row; align-items: center; justify-content: space-between; } }
     .footer-txt { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); }
     .footer-txt-accent { color: var(--accent); }
 
@@ -465,30 +471,23 @@
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section" aria-labelledby="con-h">
-      <div class="container">
-        <div class="sec-label fade-up"><span class="sec-num">05</span><div class="sec-dash"></div><span class="sec-title" id="con-h">Contact</span></div>
-        <div class="contact-grid">
-          <div>
-            <p class="contact-lead fade-up d1" data-key="con-lead" data-singleline="true">Available for professional consultation and technical collaboration.</p>
-            <p class="contact-sub fade-up d2" data-key="con-sub">Reach out via LinkedIn to discuss projects, partnerships, or just to say hi!</p>
-          </div>
-          <div class="contact-cta fade-up d2">
-            <a href="https://www.linkedin.com/in/soyeonkoo97" target="_blank" rel="noopener noreferrer" class="li-btn" data-link-key="linkedin-url" aria-label="View Koo Soyeon's LinkedIn profile (opens in new tab)">
-              <span class="li-label">View LinkedIn Profile</span>
-              <svg class="li-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <footer>
     <div class="container">
-      <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <p class="contact-lead fade-up" data-key="con-lead" data-singleline="true">Available for professional consultation and technical collaboration.</p>
+          <p class="contact-sub fade-up d1" data-key="con-sub">Reach out via LinkedIn to discuss projects, partnerships, or just to say hi!</p>
+        </div>
+        <div class="footer-contact-right fade-up d1">
+          <a href="https://www.linkedin.com/in/soyeonkoo97" target="_blank" rel="noopener noreferrer" class="li-btn" data-link-key="linkedin-url" aria-label="View Koo Soyeon's LinkedIn profile (opens in new tab)">
+            <span class="li-label">View LinkedIn Profile</span>
+            <svg class="li-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
         <span class="footer-txt footer-txt-accent">Koo Soyeon</span>
         <span class="footer-txt footer-txt-accent">Senior Environmental Analyst</span>
         <a href="#" class="footer-login" id="footer-login-btn">Login</a>
