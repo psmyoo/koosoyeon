@@ -137,10 +137,8 @@
 
     /* ── Certs ── */
     .cert-grid { display: flex; flex-direction: column; }
-    .cert-card { background: var(--bg); padding: 28px 0; display: flex; flex-direction: row; align-items: center; gap: 28px; border-bottom: 1px solid var(--border); transition: background .3s; position: relative; }
+    .cert-card { background: var(--bg); padding: 28px 0; display: flex; flex-direction: row; align-items: center; gap: 28px; border-bottom: 1px solid var(--border); transition: background .3s; }
     .cert-card:first-child { border-top: 1px solid var(--border); }
-    .cert-card::before { content: ''; position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background: var(--accent); transform: scaleY(0); transition: transform .3s; transform-origin: bottom; }
-    .cert-card:hover::before { transform: scaleY(1); }
     .cert-card:hover { background: #0e0e0e; }
     .cert-icon-wrap { width: 52px; height: 52px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; transition: border-color .3s; }
     .cert-card:hover .cert-icon-wrap { border-color: var(--accent); }
