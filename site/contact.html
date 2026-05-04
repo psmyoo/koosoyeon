@@ -28,11 +28,11 @@
     #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .5s, border-color .5s; border-bottom: 1px solid transparent; }
     #nav.scrolled, #nav.menu-open { background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-color: var(--border); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .nav-logo { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: .25em; color: var(--accent); text-decoration: none; transition: color .2s; position: relative; z-index: 60; }
+    .nav-logo { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; letter-spacing: .25em; color: var(--accent); text-decoration: none; transition: color .2s; position: relative; z-index: 60; }
     .nav-logo:hover { color: #fff; }
     .nav-links { display: none; list-style: none; gap: 32px; }
     @media (min-width: 768px) { .nav-links { display: flex; } }
-    .nav-links a { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color .2s; }
+    .nav-links a { font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color .2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--text); }
     .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 60; }
     @media (min-width: 768px) { .hamburger { display: none; } }
@@ -132,6 +132,10 @@
       .container { padding: 0 16px; }
       .status { margin-bottom: 32px; }
       .contact-body { margin-bottom: 32px; }
+    }
+    @media (min-width: 480px) and (max-width: 767px) {
+      .status { margin-bottom: 32px; }
+      .contact-body { margin-bottom: 40px; }
     }
     @media (max-width: 640px) {
       .glow-1, .glow-2 { display: none; }
