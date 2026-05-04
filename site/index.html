@@ -96,6 +96,11 @@
     @media (min-width: 1024px) { .about-grid { grid-template-columns: 1fr 380px; gap: 96px; } }
     .about-lead { font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 300; line-height: 1.3; letter-spacing: -.01em; color: var(--text); margin-bottom: 40px; }
     .about-body { font-size: 17px; color: var(--text-2); line-height: 1.75; font-weight: 300; max-width: 680px; }
+    .about-pills { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--border); margin-top: 8px; }
+    .about-pill { flex: 1 1 160px; padding: 16px 0 16px; border-right: 1px solid var(--border); padding-right: 24px; margin-right: 24px; }
+    .about-pill:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+    .about-pill-label { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .about-pill-sub { font-size: 15px; color: var(--text-2); font-weight: 300; line-height: 1.5; }
     .glance { border: 1px solid var(--border); padding: 20px; background: #161616; }
     @media (min-width: 640px) { .glance { padding: 32px; } }
     .glance-hd { font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); margin-bottom: 32px; }
@@ -345,7 +350,20 @@
         <div class="about-grid">
           <div>
             <p class="about-lead fade-up d1" data-key="about-lead">Koo Soyeon is a Senior Environmental Analyst with over eight years of experience in air quality monitoring and pollutant analysis.</p>
-            <p class="about-body fade-up d2" data-key="about-body">Specializing in industrial emissions and ambient air assessment, she applies rigorous analytical methodologies to deliver data that withstands regulatory scrutiny. Her work spans the full measurement lifecycle — from instrument calibration and sample collection through laboratory analysis, quality assurance, and compliance reporting.</p>
+            <div class="about-pills fade-up d2">
+              <div class="about-pill">
+                <div class="about-pill-label">Emissions</div>
+                <div class="about-pill-sub">Industrial stack &amp; ambient air</div>
+              </div>
+              <div class="about-pill">
+                <div class="about-pill-label">Analysis</div>
+                <div class="about-pill-sub">Trace-level pollutant detection</div>
+              </div>
+              <div class="about-pill">
+                <div class="about-pill-label">Compliance</div>
+                <div class="about-pill-sub">QA/QC &amp; regulatory reporting</div>
+              </div>
+            </div>
           </div>
           <div class="glance fade-up d3">
             <p class="glance-hd">At a glance</p>
