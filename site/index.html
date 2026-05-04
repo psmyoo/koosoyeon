@@ -27,7 +27,7 @@
     @media (min-width: 768px) { .container { padding: 0 48px; } }
 
     /* ── Navigation ── */
-    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .5s, border-color .5s; border-bottom: 1px solid transparent; }
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
     #nav.scrolled, #nav.menu-open { background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-color: var(--border); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .nav-logo { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; letter-spacing: .25em; color: var(--accent); text-decoration: none; transition: color .2s; position: relative; z-index: 60; }
@@ -284,7 +284,7 @@
         <a href="#hero" class="nav-logo" aria-label="Home">KS</a>
         <nav aria-label="Primary navigation">
           <ul class="nav-links" role="list">
-            <li><a href="#hero">Home</a></li>
+            <li><a href="#hero" class="active">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="#" data-link-key="resume-url">Resume</a></li>
@@ -302,7 +302,7 @@
     <button class="mob-close" onclick="closeMenu()" aria-label="Close menu"></button>
     <nav>
       <ul class="mob-links" role="list">
-        <li><a href="#hero" onclick="closeMenu()">Home</a></li>
+        <li><a href="#hero" class="active" onclick="closeMenu()">Home</a></li>
         <li><a href="about.html" onclick="closeMenu()">About</a></li>
         <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
         <li><a href="#" data-link-key="resume-url" onclick="closeMenu()">Resume</a></li>
