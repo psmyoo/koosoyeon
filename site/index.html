@@ -27,7 +27,7 @@
     @media (min-width: 768px) { .container { padding: 0 48px; } }
 
     /* ── Navigation ── */
-    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .5s, border-color .5s; border-bottom: 1px solid transparent; }
     #nav.scrolled, #nav.menu-open { background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-color: var(--border); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .nav-logo { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; letter-spacing: .25em; color: var(--accent); text-decoration: none; transition: color .2s; position: relative; z-index: 60; }
