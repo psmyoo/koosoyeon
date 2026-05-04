@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Senior Environmental Analyst with over eight years of experience in air quality monitoring and pollutant analysis.">
+  <title>Koo Soyeon — Senior Environmental Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #111111; --surface: #181818; --border: #232323;
+      --accent: #2DD4BF; --accent-rgb: 45,212,191;
+      --text: #FFFFFF; --text-2: #A3A3A3; --text-3: #777777;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.5; }
+    ::selection { background: rgba(45,212,191,0.15); color: #fff; }
+    ::-webkit-scrollbar { width: 2px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--accent); }
+    :focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+    /* Layout */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px) { .container { padding: 0 48px; } }
+
+    /* ── Navigation ── */
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .5s, border-color .5s; border-bottom: 1px solid transparent; }
+    #nav.scrolled { background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-color: var(--border); }
+    #nav.menu-open { background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-color: var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: .25em; color: var(--accent); text-decoration: none; transition: color .2s; position: relative; z-index: 60; }
+    .nav-logo:hover { color: #fff; }
+    .nav-links { display: none; list-style: none; gap: 32px; }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+    .nav-links a { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .hamburger { display: flex; flex-direction: column; justify-content: center; gap: 6px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px; position: relative; z-index: 60; }
+    @media (min-width: 768px) { .hamburger { display: none; } }
+    .hamburger span { display: block; width: 20px; height: 1px; background: var(--text); transition: transform .25s ease, opacity .2s; transform-origin: center; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(0, 4.5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(0, -4.5px); }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; position: fixed; inset: 0; z-index: 40; background: var(--bg); flex-direction: column; justify-content: center; padding: 0 32px; }
+    #mobile-menu.open { display: flex; }
+    .mob-links { list-style: none; }
+    .mob-links li { margin-bottom: 32px; }
+    .mob-links a { font-family: 'Space Mono', monospace; font-size: clamp(1.1rem, 5.5vw, 1.8rem); letter-spacing: .1em; text-transform: uppercase; color: var(--text); text-decoration: none; transition: color .2s; display: flex; align-items: center; padding: 8px 0; min-height: 44px; }
+    .mob-links a:hover { color: var(--accent); }
+    .mob-footer { position: absolute; bottom: 40px; left: 32px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #2A2A2A; }
+
+    /* ── Hero ── */
+    #hero { position: relative; height: 100vh; min-height: 600px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+    #waveform { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, var(--bg) 100%); pointer-events: none; }
+    .hero-content { position: relative; z-index: 10; padding-top: 64px; }
+    .hero-label { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; opacity: 0; transform: translateY(24px); animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .3s forwards; }
+    @media (min-width: 640px) { .hero-label { font-size: 18px; letter-spacing: .3em; } }
+    .hero-name-wrap { overflow: hidden; }
+    .hero-name { display: block; font-size: clamp(1.5rem, 8vw, 8rem); font-weight: 700; line-height: .92; letter-spacing: -.03em; color: var(--text); white-space: nowrap; opacity: 0; transform: translateY(60px); animation: fadeUp 1s cubic-bezier(.16,1,.3,1) .4s forwards; }
+    
+    .hero-divider { display: flex; align-items: center; gap: 20px; margin: 24px 0 24px; opacity: 0; transform: translateY(24px); animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .65s forwards; flex-wrap: wrap; }
+    .hero-divider-line { width: 40px; height: 1px; background: var(--accent); flex-shrink: 0; }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hero-chip { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); background: transparent; border: none; padding: 0; }
+    .hero-statement { font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 300; color: var(--text-2); max-width: 40ch; line-height: 1.6; overflow-wrap: break-word; opacity: 0; transform: translateY(24px); animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .75s forwards; }
+    .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 12px; opacity: 0; animation: scrollFadeIn 1s ease 1.4s forwards; cursor: pointer; background: none; border: none; padding: 8px; }
+    .scroll-indicator:hover .scroll-label { color: var(--accent); }
+    .scroll-indicator:hover .scroll-circle { border-color: var(--accent); }
+    .scroll-indicator:hover .scroll-dot { background: var(--accent); }
+    .scroll-label { font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: .35em; text-transform: uppercase; color: #888; transition: color .2s; }
+    .scroll-circle { width: 28px; height: 28px; border: 1px solid #888; border-radius: 50%; position: relative; overflow: hidden; transition: border-color .2s; }
+    .scroll-dot { position: absolute; left: 50%; transform: translateX(-50%); top: 5px; width: 4px; height: 4px; background: #888; border-radius: 50%; animation: scrollDot 1.8s ease-in-out infinite; transition: background .2s; }
+    @keyframes scrollFadeIn { to { opacity: 1; } }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollDot { 0% { top: 5px; opacity: 1; } 65% { top: 17px; opacity: 0; } 66% { top: 5px; opacity: 0; } 100% { top: 5px; opacity: 1; } }
+
+    /* ── Sections ── */
+    .section { padding: 64px 0; border-top: 1px solid var(--border); }
+    @media (min-width: 768px) { .section { padding: 112px 0; } }
+    @media (min-width: 1024px) { .section { padding: 144px 0; } }
+    .sec-label { display: flex; align-items: center; gap: 16px; margin-bottom: 64px; }
+    @media (min-width: 768px) { .sec-label { margin-bottom: 80px; } }
+    .sec-num { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--accent); }
+    .sec-dash { width: 32px; height: 1px; background: #2A2A2A; }
+    .sec-title { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--text-3); }
+
+    /* ── About ── */
+    .about-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+    @media (min-width: 1024px) { .about-grid { grid-template-columns: 1fr 380px; gap: 96px; } }
+    .about-lead { font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 300; line-height: 1.3; letter-spacing: -.01em; color: var(--text); margin-bottom: 40px; }
+    .about-body { font-size: 17px; color: var(--text-2); line-height: 1.75; font-weight: 300; max-width: 680px; }
+    .glance { border: 1px solid var(--border); padding: 20px; background: #161616; }
+    @media (min-width: 640px) { .glance { padding: 32px; } }
+    .glance-hd { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); margin-bottom: 32px; }
+    .glance-row { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 20px; }
+    .glance-row:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+    .glance-lbl { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
+    .glance-val { font-size: 19px; color: var(--text); font-weight: 400; letter-spacing: -.01em; }
+
+    /* ── Expertise ── */
+    .exp-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); }
+    @media (min-width: 768px) { .exp-grid { grid-template-columns: 1fr 1fr; } }
+    .exp-card { background: var(--bg); padding: 24px; transition: background .3s; }
+    @media (min-width: 640px) { .exp-card { padding: 32px; } }
+    @media (min-width: 1024px) { .exp-card { padding: 40px; } }
+    .exp-card:hover { background: #161616; }
+    .exp-icon { width: 44px; height: 44px; border: 1px solid #232323; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 24px; transition: border-color .3s; }
+    .exp-card:hover .exp-icon { border-color: var(--accent); }
+    .exp-hd { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+    .exp-idx { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; margin-top: 4px; }
+    .exp-name { font-size: clamp(18px, 2.5vw, 22px); font-weight: 500; color: var(--text); letter-spacing: -.02em; line-height: 1.2; }
+    .exp-desc { font-size: 14px; color: var(--text-2); line-height: 1.7; font-weight: 300; }
+    @media (min-width: 768px) { .exp-desc { font-size: 15px; } }
+    .exp-line { margin-top: 24px; width: 0; height: 1px; background: var(--accent); transition: width .5s; }
+    .exp-card:hover .exp-line { width: 32px; }
+
+    /* ── Methods ── */
+    .mth-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); }
+    @media (min-width: 640px) { .mth-grid { grid-template-columns: 1fr 1fr; } }
+    .mth-card { background: var(--bg); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; transition: background .3s; }
+    @media (min-width: 640px) { .mth-card { padding: 32px 40px 40px; min-height: 200px; } }
+    @media (min-width: 768px) { .mth-card { padding: 40px 48px; min-height: 220px; } }
+    .mth-card:hover { background: #161616; }
+    .mth-acronym { font-family: 'Space Mono', monospace; font-size: clamp(1.6rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -.03em; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+    .mth-full { font-size: 14px; font-weight: 300; color: var(--text-2); letter-spacing: .01em; }
+    @media (min-width: 768px) { .mth-full { font-size: 15px; } }
+    .mth-sep { border-top: 1px solid var(--border); padding-top: 16px; margin-top: 16px; }
+    .mth-desc { font-size: 14px; color: var(--text-3); line-height: 1.65; font-weight: 300; }
+    @media (min-width: 768px) { .mth-desc { font-size: 15px; } }
+
+    /* ── Certs ── */
+    .cert-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); }
+    @media (min-width: 640px) { .cert-grid { grid-template-columns: 1fr 1fr; } }
+    .cert-card { background: var(--bg); padding: 24px; border-top: 2px solid var(--accent); display: flex; flex-direction: column; justify-content: space-between; transition: background .3s; }
+    @media (min-width: 640px) { .cert-card { padding: 32px 40px; min-height: 220px; } }
+    @media (min-width: 1024px) { .cert-card { padding: 40px; min-height: 240px; } }
+    .cert-card:hover { background: #161616; }
+    .cert-card-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .cert-icon { color: var(--accent); }
+    .cert-check { width: 22px; height: 22px; border: 1px solid #2A2A2A; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); transition: border-color .3s; flex-shrink: 0; }
+    .cert-card:hover .cert-check { border-color: var(--accent); }
+    .cert-card-name { font-size: clamp(17px, 2.5vw, 22px); font-weight: 500; color: var(--text); letter-spacing: -.02em; line-height: 1.2; margin-bottom: 8px; }
+    .cert-card-domain { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .10em; text-transform: uppercase; color: var(--text-3); }
+    .cert-card-footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .cert-badge { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+    .cert-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+    /* ── Contact ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: end; }
+    @media (min-width: 1024px) { .contact-grid { grid-template-columns: 1fr 1fr; gap: 96px; } }
+    .contact-lead { font-size: clamp(1.6rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.2; letter-spacing: -.02em; color: var(--text); margin-bottom: 16px; }
+    .contact-sub { font-size: 16px; color: var(--text-3); font-weight: 300; line-height: 1.6; max-width: 320px; }
+    .contact-cta { display: flex; flex-direction: column; }
+    @media (min-width: 1024px) { .contact-cta { align-items: flex-end; } }
+    .li-btn { display: flex; align-items: center; justify-content: space-between; gap: 16px; border: 1px solid #2A2A2A; padding: 20px 32px; text-decoration: none; transition: border-color .3s, background .3s; width: 100%; }
+    @media (min-width: 640px) { .li-btn { width: auto; } }
+    .li-btn:hover { border-color: var(--accent); background: rgba(45,212,191,.05); }
+    .li-label { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--text); }
+    .li-icon { color: var(--text-3); transition: color .3s, transform .3s; flex-shrink: 0; }
+    .li-btn:hover .li-icon { color: var(--accent); transform: translate(2px,-2px); }
+    .li-url { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .15em; color: #2A2A2A; margin-top: 12px; }
+
+    /* ── Footer ── */
+    footer { border-top: 1px solid var(--border); padding: 28px 0; }
+    .footer-inner { display: flex; flex-direction: column; gap: 6px; }
+    @media (min-width: 640px) { .footer-inner { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .footer-txt { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); }
+    .footer-txt-accent { color: var(--accent); }
+
+    /* ── Scroll animations ── */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: .08s; }
+    .fade-up.d2 { transition-delay: .16s; }
+    .fade-up.d3 { transition-delay: .24s; }
+    .fade-up.d4 { transition-delay: .32s; }
+
+    /* ── Auth / Edit mode ── */
+    .footer-login { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); text-decoration:none; transition:color .2s; }
+    .footer-login:hover { color:var(--text); }
+    .edit-mode .footer-login { display:none; }
+    .edit-mode [data-key] { outline:1px dashed rgba(45,212,191,.22); border-radius:2px; cursor:text; }
+    .edit-mode [data-key]:hover { outline-color:rgba(45,212,191,.5); background:rgba(45,212,191,.04); }
+    .edit-mode [data-key]:focus { outline-color:var(--accent) !important; background:rgba(45,212,191,.07); outline-offset:2px; }
+    .edit-bar { position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(100px); background:#181818; border:1px solid var(--border); padding:14px 20px; display:flex; align-items:center; gap:10px; z-index:200; box-shadow:0 8px 40px rgba(0,0,0,.6); transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s; opacity:0; pointer-events:none; }
+    .edit-mode .edit-bar { transform:translateX(-50%) translateY(0); opacity:1; pointer-events:all; }
+    .edit-save { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; background:var(--accent); color:#000; border:none; padding:10px 18px; cursor:pointer; transition:opacity .2s; }
+    .edit-save:hover { opacity:.85; }
+    .edit-logout { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; background:none; color:var(--text-3); border:1px solid var(--border); padding:10px 18px; cursor:pointer; transition:color .2s; }
+    .edit-logout:hover { color:var(--text); }
+    .edit-saved-msg { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); opacity:0; transition:opacity .3s; }
+    .edit-saved-msg.show { opacity:1; }
+    .login-overlay { display:none; position:fixed; inset:0; z-index:300; background:rgba(0,0,0,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); align-items:center; justify-content:center; }
+    .login-overlay.open { display:flex; }
+    .login-modal { position:relative; background:#181818; border:1px solid var(--border); padding:48px 40px; width:100%; max-width:380px; margin:0 20px; }
+    .login-ttl { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.25em; text-transform:uppercase; color:var(--accent); margin-bottom:32px; }
+    .login-field { margin-bottom:16px; }
+    .login-lbl { display:block; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--text-3); margin-bottom:8px; }
+    .login-inp { width:100%; background:var(--bg); border:1px solid var(--border); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; padding:12px 14px; outline:none; transition:border-color .2s; }
+    .login-inp:focus { border-color:var(--accent); }
+    .login-err { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.1em; color:#f87171; margin-top:12px; display:none; }
+    .login-err.show { display:block; }
+    .login-btn { width:100%; background:var(--accent); color:#000; border:none; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; padding:14px; cursor:pointer; margin-top:24px; transition:opacity .2s; }
+    .login-btn:hover { opacity:.85; }
+    .login-x { position:absolute; top:14px; right:14px; background:none; border:none; color:var(--text-3); cursor:pointer; padding:8px; line-height:1; font-size:18px; transition:color .2s; }
+    .login-x:hover { color:var(--text); }
+    .edit-links { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; background:none; color:var(--text-3); border:1px solid var(--border); padding:10px 18px; cursor:pointer; transition:color .2s; }
+    .edit-links:hover { color:var(--text); }
+    .link-modal-overlay { display:none; position:fixed; inset:0; z-index:300; background:rgba(0,0,0,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); align-items:center; justify-content:center; }
+    .link-modal-overlay.open { display:flex; }
+    .del-chip-btn { display:none; margin-left:5px; background:none; border:none; color:rgba(45,212,191,.5); cursor:pointer; font-size:13px; line-height:1; padding:0 2px; vertical-align:middle; transition:color .2s; }
+    .edit-mode .del-chip-btn { display:inline; }
+    .del-chip-btn:hover { color:#f87171; }
+    .del-card-btn { display:none; position:absolute; top:10px; right:10px; background:none; border:1px solid var(--border); color:var(--text-3); cursor:pointer; font-size:12px; padding:4px 7px; transition:all .2s; z-index:2; }
+    .del-card-btn:hover { border-color:#f87171; color:#f87171; }
+    .edit-mode .del-card-btn { display:block; }
+    .edit-mode .exp-card, .edit-mode .cert-card { position:relative; }
+    .add-chip-btn { display:none; align-items:center; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:rgba(45,212,191,.45); border:1px dashed rgba(45,212,191,.25); background:none; padding:6px 12px; cursor:pointer; transition:all .2s; }
+    .edit-mode .add-chip-btn { display:inline-flex; }
+    .add-chip-btn:hover { color:var(--accent); border-color:var(--accent); }
+    .add-item-btn { display:none; width:100%; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:rgba(45,212,191,.45); border:1px dashed rgba(45,212,191,.22); background:none; padding:16px; cursor:pointer; transition:all .2s; margin-top:1px; }
+    .edit-mode .add-item-btn { display:block; }
+    .add-item-btn:hover { color:var(--accent); border-color:var(--accent); background:rgba(45,212,191,.03); }
+
+    /* ── Mobile / Tablet responsive overrides ── */
+    @media (max-width: 479px) {
+      .container { padding: 0 16px; }
+      .sec-label { margin-bottom: 40px; }
+      .glance-val { font-size: 16px; }
+      .about-body { font-size: 15px; }
+      .about-lead { font-size: clamp(1.25rem, 5vw, 1.7rem); }
+    }
+    @media (max-width: 640px) {
+      .edit-bar { left: 16px; right: 16px; width: auto; transform: translateY(120px); flex-wrap: wrap; justify-content: center; padding: 12px 14px; bottom: 16px; }
+      .edit-mode .edit-bar { transform: translateY(0); }
+      .edit-save, .edit-links, .edit-logout { flex: 1 1 100px; }
+      .login-modal { padding: 32px 20px; }
+      .login-inp { font-size: 16px; }
+      .hero-chips { gap: 6px; }
+      .hero-chip { font-size: 11px; }
+      .about-body { font-size: 15px; }
+      .hero-statement { font-size: 1rem; line-height: 1.7; }
+      .contact-sub { max-width: 100%; }
+      .mth-acronym { font-size: clamp(1.6rem, 8vw, 3rem); }
+    }
+    @media (min-width: 640px) { .about-grid { gap: 48px; } }
+  </style>
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a class="sr-only" href="#main" style="position:fixed;top:4px;left:4px;z-index:100;background:var(--accent);color:#000;padding:8px 16px;font-family:'Space Mono',monospace;font-size:12px;">Skip to main content</a>
+
+  <!-- Nav -->
+  <header id="nav" role="banner">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo" aria-label="Home">KS</a>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links" role="list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" data-link-key="resume-url">Resume</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <nav>
+      <ul class="mob-links" role="list">
+        <li><a href="#hero" onclick="closeMenu()">Home</a></li>
+        <li><a href="about.html" onclick="closeMenu()">About</a></li>
+        <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+        <li><a href="#" data-link-key="resume-url" onclick="closeMenu()">Resume</a></li>
+      </ul>
+    </nav>
+    <p class="mob-footer">Koo Soyeon — Senior Environmental Analyst</p>
+  </div>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section id="hero" aria-label="Introduction">
+      <canvas id="waveform" aria-hidden="true"></canvas>
+      <div class="vignette" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <p class="hero-label" data-key="hero-label" data-singleline="true">Senior Environmental Analyst</p>
+          <div class="hero-name-wrap"><h1 class="hero-name" data-key="hero-name" data-singleline="true">KOO SOYEON</h1></div>
+          <div class="hero-divider">
+            <div class="hero-divider-line"></div>
+            <div class="hero-chips" id="hero-chips">
+              <span class="hero-chip" data-key="chip-1" data-singleline="true">Air Quality</span>
+              <span class="hero-chip" data-key="chip-2" data-singleline="true">Industrial Emissions</span>
+              <span class="hero-chip" data-key="chip-3" data-singleline="true">Compliance</span>
+              <button class="add-chip-btn" id="add-chip-btn">+ Tag</button>
+            </div>
+          </div>
+          <p class="hero-statement" data-key="hero-statement">8+ years at the intersection of environmental science and industrial compliance — driven by curiosity, precision, and a genuine love for the work.</p>
+        </div>
+      </div>
+      <button class="scroll-indicator" aria-label="Scroll to next section" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+        <span class="scroll-label">Scroll</span>
+        <div class="scroll-circle" aria-hidden="true"><div class="scroll-dot"></div></div>
+      </button>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section" aria-labelledby="about-h">
+      <div class="container">
+        <div class="sec-label fade-up"><span class="sec-num">01</span><div class="sec-dash"></div><span class="sec-title" id="about-h">About</span></div>
+        <div class="about-grid">
+          <div>
+            <p class="about-lead fade-up d1" data-key="about-lead">Koo Soyeon is a Senior Environmental Analyst with over eight years of experience in air quality monitoring and pollutant analysis.</p>
+            <p class="about-body fade-up d2" data-key="about-body">Specializing in industrial emissions and ambient air assessment, she applies rigorous analytical methodologies to deliver data that withstands regulatory scrutiny. Her work spans the full measurement lifecycle — from instrument calibration and sample collection through laboratory analysis, quality assurance, and compliance reporting.</p>
+          </div>
+          <div class="glance fade-up d3">
+            <p class="glance-hd">At a glance</p>
+            <dl>
+              <div class="glance-row"><dt class="glance-lbl">Experience</dt><dd class="glance-val" data-key="g-exp" data-singleline="true">8+ years</dd></div>
+              <div class="glance-row"><dt class="glance-lbl">Specialization</dt><dd class="glance-val" data-key="g-spec" data-singleline="true">Air quality & industrial emissions</dd></div>
+              <div class="glance-row"><dt class="glance-lbl">Focus</dt><dd class="glance-val" data-key="g-focus" data-singleline="true">Measurement precision</dd></div>
+              <div class="glance-row"><dt class="glance-lbl">Domain</dt><dd class="glance-val" data-key="g-domain" data-singleline="true">Environmental compliance</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise -->
+    <section id="expertise" class="section" aria-labelledby="exp-h">
+      <div class="container">
+        <div class="sec-label fade-up"><span class="sec-num">02</span><div class="sec-dash"></div><span class="sec-title" id="exp-h">Areas of Expertise</span></div>
+        <div class="exp-grid" id="exp-grid">
+          <article class="exp-card fade-up">
+            <div class="exp-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg></div>
+            <div class="exp-hd"><span class="exp-idx">/01</span><h3 class="exp-name" data-key="exp-n-1" data-singleline="true">Air Quality Monitoring</h3></div>
+            <p class="exp-desc" data-key="exp-d-1">Industrial stack emissions and ambient air assessment across regulated and unregulated pollutant classes.</p>
+            <div class="exp-line"></div>
+          </article>
+          <article class="exp-card fade-up d1">
+            <div class="exp-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6m-5 0v5.4L6.1 16A2 2 0 0 0 7.9 19h8.2a2 2 0 0 0 1.8-2.9L14 8.4V3"/><line x1="6.5" y1="14" x2="17.5" y2="14"/></svg></div>
+            <div class="exp-hd"><span class="exp-idx">/02</span><h3 class="exp-name" data-key="exp-n-2" data-singleline="true">Pollutant Analysis</h3></div>
+            <p class="exp-desc" data-key="exp-d-2">Quantitative detection of aldehydes, phenols, hydrogen chloride, and volatile organic compounds.</p>
+            <div class="exp-line"></div>
+          </article>
+          <article class="exp-card fade-up d2">
+            <div class="exp-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg></div>
+            <div class="exp-hd"><span class="exp-idx">/03</span><h3 class="exp-name" data-key="exp-n-3" data-singleline="true">Detection Methods</h3></div>
+            <p class="exp-desc" data-key="exp-d-3">Trace-level identification of metals and volatile compounds using validated laboratory instrumentation.</p>
+            <div class="exp-line"></div>
+          </article>
+          <article class="exp-card fade-up d3">
+            <div class="exp-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <div class="exp-hd"><span class="exp-idx">/04</span><h3 class="exp-name" data-key="exp-n-4" data-singleline="true">Regulatory Compliance</h3></div>
+            <p class="exp-desc" data-key="exp-d-4">Data integrity assurance, QA/QC protocols, and compliance reporting to environmental regulatory standards.</p>
+            <div class="exp-line"></div>
+          </article>
+        </div>
+        <button class="add-item-btn" id="add-exp-btn">+ Add expertise area</button>
+      </div>
+    </section>
+
+    <!-- Methods -->
+    <section id="methods" class="section" aria-labelledby="mth-h">
+      <div class="container">
+        <div class="sec-label fade-up"><span class="sec-num">03</span><div class="sec-dash"></div><span class="sec-title" id="mth-h">Laboratory Methods</span></div>
+        <div class="mth-grid">
+          <article class="mth-card fade-up">
+            <div><p class="mth-acronym" aria-hidden="true" data-key="mth-a-1" data-singleline="true">ICP</p><p class="mth-full" data-key="mth-f-1" data-singleline="true"><span class="sr-only">ICP — </span>Inductively Coupled Plasma</p></div>
+            <div class="mth-sep"><p class="mth-desc" data-key="mth-d-1">Multi-element trace metal analysis in aqueous and digested environmental matrices.</p></div>
+          </article>
+          <article class="mth-card fade-up d1">
+            <div><p class="mth-acronym" aria-hidden="true" data-key="mth-a-2" data-singleline="true">GC</p><p class="mth-full" data-key="mth-f-2" data-singleline="true">Gas Chromatography</p></div>
+            <div class="mth-sep"><p class="mth-desc" data-key="mth-d-2">Separation and quantification of volatile and semi-volatile organic compounds.</p></div>
+          </article>
+          <article class="mth-card fade-up d2">
+            <div><p class="mth-acronym" aria-hidden="true" data-key="mth-a-3" data-singleline="true">AA</p><p class="mth-full" data-key="mth-f-3" data-singleline="true">Atomic Absorption Spectroscopy</p></div>
+            <div class="mth-sep"><p class="mth-desc" data-key="mth-d-3">Single-element determination of metals at trace and ultra-trace concentrations.</p></div>
+          </article>
+          <article class="mth-card fade-up d3">
+            <div><p class="mth-acronym" aria-hidden="true" data-key="mth-a-4" data-singleline="true">GC-MS</p><p class="mth-full" data-key="mth-f-4" data-singleline="true">Gas Chromatography–Mass Spectrometry</p></div>
+            <div class="mth-sep"><p class="mth-desc" data-key="mth-d-4">Definitive identification and quantification of complex organic mixtures and unknowns.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="section" aria-labelledby="cert-h">
+      <div class="container">
+        <div class="sec-label fade-up"><span class="sec-num">04</span><div class="sec-dash"></div><span class="sec-title" id="cert-h">Certifications</span></div>
+        <div class="cert-grid" id="cert-grid">
+          <article class="cert-card fade-up">
+            <div>
+              <div class="cert-card-hd">
+                <div class="cert-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+                <div class="cert-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <h3 class="cert-card-name" data-key="cert-n-1" data-singleline="true">Air and Water Quality</h3>
+              <p class="cert-card-domain" data-key="cert-dom-1" data-singleline="true">Environmental Monitoring</p>
+            </div>
+            <div class="cert-card-footer">
+              <span class="cert-badge">Certified</span>
+              <div class="cert-badge-dot"></div>
+            </div>
+          </article>
+          <article class="cert-card fade-up d1">
+            <div>
+              <div class="cert-card-hd">
+                <div class="cert-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                <div class="cert-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <h3 class="cert-card-name" data-key="cert-n-2" data-singleline="true">Hazardous Materials</h3>
+              <p class="cert-card-domain" data-key="cert-dom-2" data-singleline="true">Safety &amp; Compliance</p>
+            </div>
+            <div class="cert-card-footer">
+              <span class="cert-badge">Certified</span>
+              <div class="cert-badge-dot"></div>
+            </div>
+          </article>
+          <article class="cert-card fade-up d2">
+            <div>
+              <div class="cert-card-hd">
+                <div class="cert-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+                <div class="cert-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <h3 class="cert-card-name" data-key="cert-n-3" data-singleline="true">Industrial Safety</h3>
+              <p class="cert-card-domain" data-key="cert-dom-3" data-singleline="true">Workplace Safety</p>
+            </div>
+            <div class="cert-card-footer">
+              <span class="cert-badge">Certified</span>
+              <div class="cert-badge-dot"></div>
+            </div>
+          </article>
+          <article class="cert-card fade-up d3">
+            <div>
+              <div class="cert-card-hd">
+                <div class="cert-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+                <div class="cert-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              </div>
+              <h3 class="cert-card-name" data-key="cert-n-4" data-singleline="true">Air Quality Measurement</h3>
+              <p class="cert-card-domain" data-key="cert-dom-4" data-singleline="true">Analytical Methods</p>
+            </div>
+            <div class="cert-card-footer">
+              <span class="cert-badge">Certified</span>
+              <div class="cert-badge-dot"></div>
+            </div>
+          </article>
+        </div>
+        <button class="add-item-btn" id="add-cert-btn">+ Add certification</button>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section" aria-labelledby="con-h">
+      <div class="container">
+        <div class="sec-label fade-up"><span class="sec-num">05</span><div class="sec-dash"></div><span class="sec-title" id="con-h">Contact</span></div>
+        <div class="contact-grid">
+          <div>
+            <p class="contact-lead fade-up d1" data-key="con-lead" data-singleline="true">Available for professional consultation and technical collaboration.</p>
+            <p class="contact-sub fade-up d2" data-key="con-sub">Reach out via LinkedIn to discuss projects, partnerships, or just to say hi!</p>
+          </div>
+          <div class="contact-cta fade-up d2">
+            <a href="https://www.linkedin.com/in/soyeonkoo97" target="_blank" rel="noopener noreferrer" class="li-btn" data-link-key="linkedin-url" aria-label="View Koo Soyeon's LinkedIn profile (opens in new tab)">
+              <span class="li-label">View LinkedIn Profile</span>
+              <svg class="li-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <p class="li-url">linkedin.com/in/soyeonkoo97</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-txt footer-txt-accent">Koo Soyeon</span>
+        <span class="footer-txt footer-txt-accent">Senior Environmental Analyst</span>
+        <a href="#" class="footer-login" id="footer-login-btn">Login</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link editor modal -->
+  <div class="link-modal-overlay" id="link-modal-overlay">
+    <div class="login-modal">
+      <button class="login-x" id="link-modal-close">×</button>
+      <p class="login-ttl">Edit Links</p>
+      <div class="login-field" id="link-field-linkedin">
+        <label class="login-lbl" for="link-linkedin">LinkedIn URL</label>
+        <input class="login-inp" id="link-linkedin" type="url" placeholder="https://linkedin.com/in/...">
+      </div>
+      <div class="login-field" id="link-field-resume">
+        <label class="login-lbl" for="link-resume">Resume URL</label>
+        <input class="login-inp" id="link-resume" type="url" placeholder="Paste link or file URL">
+      </div>
+      <button class="login-btn" id="link-modal-save">Save</button>
+    </div>
+  </div>
+
+  <!-- Login modal -->
+  <div class="login-overlay" id="login-overlay" role="dialog" aria-modal="true" aria-label="Editor login">
+    <div class="login-modal">
+      <button class="login-x" id="login-x" aria-label="Close">×</button>
+      <p class="login-ttl">Editor Login</p>
+      <div class="login-field">
+        <label class="login-lbl" for="login-pass">Password</label>
+        <input class="login-inp" id="login-pass" type="password" autocomplete="current-password">
+      </div>
+      <p class="login-err" id="login-err">Incorrect password.</p>
+      <button class="login-btn" id="login-submit">Enter</button>
+    </div>
+  </div>
+
+  <!-- Edit toolbar -->
+  <div class="edit-bar" id="edit-bar" role="toolbar" aria-label="Edit controls">
+    <button class="edit-save" id="edit-save">Save changes</button>
+    <button class="edit-links" id="edit-links-btn">Edit links</button>
+    <button class="edit-links" id="edit-sync-btn">Cloud sync</button>
+    <button class="edit-logout" id="edit-logout-bar">Log out</button>
+    <span class="edit-saved-msg" id="edit-saved-msg" aria-live="polite">Saved</span>
+  </div>
+
+  <!-- Cloud sync settings modal -->
+  <div class="login-overlay" id="sync-modal-overlay">
+    <div class="login-modal">
+      <button class="login-x" id="sync-modal-close">×</button>
+      <p class="login-ttl">Cloud Sync</p>
+      <p style="font-size:12px;color:var(--text-3);line-height:1.75;margin-bottom:24px;font-family:'Space Mono',monospace;letter-spacing:.04em;">Saves will push edits to the live site. Generate a token at github.com/settings/tokens — Fine-grained, Contents: Read &amp; Write, for this repo.</p>
+      <div class="login-field">
+        <label class="login-lbl" for="sync-token">GitHub Token</label>
+        <input class="login-inp" id="sync-token" type="password" placeholder="github_pat_...">
+      </div>
+      <button class="login-btn" id="sync-modal-save">Save token</button>
+      <button class="login-btn" id="sync-modal-clear" style="margin-top:8px;background:transparent;color:var(--text-3);border:1px solid var(--border);">Remove token</button>
+    </div>
+  </div>
+
+  <script>
+    // Molecular orbital animation — chemistry × anime
+    const canvas = document.getElementById('waveform');
+    const ctx = canvas.getContext('2d');
+    const ACC = '45,212,191';
+    let W=0, H=0, t=0;
+
+    const RINGS = [
+      { a:.22, b:.10, tilt:-.38, speed:.009,  phase:0,          n:2 },
+      { a:.30, b:.13, tilt: .65, speed:-.006, phase:Math.PI,    n:1 },
+      { a:.17, b:.08, tilt:1.15, speed:.013,  phase:Math.PI*.6, n:2 },
+    ];
+    const HEXES = [
+      { rx:.83, ry:.18, r:0, base:72, rot:0,         speed: .0005 },
+      { rx:.10, ry:.70, r:0, base:50, rot:Math.PI/6, speed:-.0004 },
+    ];
+
+    function ePos(cx,cy,ring,angle){
+      const a=ring.a*W, b=ring.b*H;
+      return {
+        x: cx + a*Math.cos(angle)*Math.cos(ring.tilt) - b*Math.sin(angle)*Math.sin(ring.tilt),
+        y: cy + a*Math.cos(angle)*Math.sin(ring.tilt) + b*Math.sin(angle)*Math.cos(ring.tilt),
+      };
+    }
+
+    function drawHex(cx,cy,r,rot,alpha){
+      const pts=Array.from({length:6},(_,i)=>{
+        const a=rot+i*Math.PI/3;
+        return [cx+Math.cos(a)*r, cy+Math.sin(a)*r];
+      });
+      ctx.beginPath();
+      pts.forEach(([x,y],i)=>i===0?ctx.moveTo(x,y):ctx.lineTo(x,y));
+      ctx.closePath();
+      ctx.strokeStyle=`rgba(${ACC},${alpha*.38})`; ctx.lineWidth=.9; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx,cy,r*.55,0,Math.PI*2);
+      ctx.strokeStyle=`rgba(${ACC},${alpha*.18})`; ctx.lineWidth=.7; ctx.stroke();
+      pts.forEach(([x,y],i)=>{
+        const p=.65+.35*Math.sin(t*1.8+i*1.05);
+        const g=ctx.createRadialGradient(x,y,0,x,y,9);
+        g.addColorStop(0,`rgba(${ACC},${alpha*.55*p})`);
+        g.addColorStop(1,`rgba(${ACC},0)`);
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,9,0,Math.PI*2); ctx.fill();
+        ctx.fillStyle=`rgba(${ACC},${alpha*.9*p})`;
+        ctx.beginPath(); ctx.arc(x,y,2.2,0,Math.PI*2); ctx.fill();
+      });
+    }
+
+    function resize(){
+      const dpr=window.devicePixelRatio||1;
+      W=canvas.offsetWidth; H=canvas.offsetHeight;
+      canvas.width=W*dpr; canvas.height=H*dpr;
+      ctx.scale(dpr,dpr);
+      HEXES.forEach(h=>h.r=h.base*(Math.min(W,H)/900));
+    }
+    resize();
+    new ResizeObserver(resize).observe(canvas);
+
+    (function loop(){
+      ctx.clearRect(0,0,W,H);
+      const cx=W*.64, cy=H*.50;
+
+      // Nucleus
+      const ng=ctx.createRadialGradient(cx,cy,0,cx,cy,55);
+      ng.addColorStop(0,`rgba(${ACC},.16)`); ng.addColorStop(1,`rgba(${ACC},0)`);
+      ctx.fillStyle=ng; ctx.beginPath(); ctx.arc(cx,cy,55,0,Math.PI*2); ctx.fill();
+      const np=.8+.2*Math.sin(t*2.5);
+      ctx.fillStyle=`rgba(255,255,255,${.82*np})`;
+      ctx.beginPath(); ctx.arc(cx,cy,3,0,Math.PI*2); ctx.fill();
+
+      // Orbitals + electrons
+      RINGS.forEach(ring=>{
+        ring.phase+=ring.speed;
+        const a=ring.a*W, b=ring.b*H;
+        ctx.save(); ctx.translate(cx,cy); ctx.rotate(ring.tilt);
+        ctx.beginPath(); ctx.ellipse(0,0,a,b,0,0,Math.PI*2);
+        ctx.strokeStyle=`rgba(${ACC},.09)`; ctx.lineWidth=.8; ctx.stroke();
+        ctx.restore();
+        for(let i=0;i<ring.n;i++){
+          const base=ring.phase+i*(Math.PI*2/ring.n);
+          for(let s=7;s>=1;s--){
+            const {x,y}=ePos(cx,cy,ring,base-s*.07);
+            ctx.fillStyle=`rgba(${ACC},${(1-s/8)*.28})`;
+            ctx.beginPath(); ctx.arc(x,y,1.4,0,Math.PI*2); ctx.fill();
+          }
+          const {x,y}=ePos(cx,cy,ring,base);
+          const eg=ctx.createRadialGradient(x,y,0,x,y,11);
+          eg.addColorStop(0,`rgba(${ACC},.75)`); eg.addColorStop(1,`rgba(${ACC},0)`);
+          ctx.fillStyle=eg; ctx.beginPath(); ctx.arc(x,y,11,0,Math.PI*2); ctx.fill();
+          ctx.fillStyle='rgba(255,255,255,.95)';
+          ctx.beginPath(); ctx.arc(x,y,2.4,0,Math.PI*2); ctx.fill();
+        }
+      });
+
+      // Floating hex structures
+      HEXES.forEach(h=>{ h.rot+=h.speed; drawHex(h.rx*W,h.ry*H,h.r,h.rot,.7); });
+
+      t+=.016;
+      requestAnimationFrame(loop);
+    })();
+
+    // Nav scroll
+    window.addEventListener('scroll',()=>{
+      const nav=document.getElementById('nav');
+      nav.classList.toggle('scrolled',window.scrollY>60);
+    },{passive:true});
+
+    // Hamburger
+    const btn=document.getElementById('hamburger'), menu=document.getElementById('mobile-menu');
+    function closeMenu(){
+      menu.classList.remove('open'); btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Open menu');
+      document.body.style.overflow='';
+      document.getElementById('nav').classList.remove('menu-open');
+    }
+    btn.addEventListener('click',()=>{
+      const open=menu.classList.toggle('open');
+      btn.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',String(open));
+      btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+      document.body.style.overflow=open?'hidden':'';
+      document.getElementById('nav').classList.toggle('menu-open',open);
+    });
+
+    // Scroll fade-in
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);} });
+    },{rootMargin:'-60px'});
+    document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+
+    // ── Auth & Edit ──
+    const _STORE='ks_content', _SESSION='ks_auth', _STRUCT='ks_struct', _LINKS='ks_links', _SYNC='ks_gh_token';
+    const _GH_API='https://api.github.com/repos/psyoo34/koosoyeon/contents/site/live-content.json';
+    const _GH_RAW='https://raw.githubusercontent.com/psyoo34/koosoyeon/main/site/live-content.json';
+    const _C={p:'koo2024!'};
+
+    function _isAuth(){ return sessionStorage.getItem(_SESSION)==='1'; }
+
+    // Load saved structure (added/removed items)
+    function _loadStructure(){
+      try {
+        const d=JSON.parse(localStorage.getItem(_STRUCT)||'{}');
+        [['hero-chips','chips'],['exp-grid','exp'],['cert-grid','cert']].forEach(([id,key])=>{
+          const el=document.getElementById(id);
+          if(el && d[key]){ el.innerHTML=d[key]; el.querySelectorAll('.fade-up').forEach(e=>e.classList.add('visible')); }
+        });
+      } catch(e){}
+    }
+
+    // Save structure (strips delete buttons from clone)
+    function _saveStructure(){
+      try {
+        const d=JSON.parse(localStorage.getItem(_STRUCT)||'{}');
+        [['hero-chips','chips'],['exp-grid','exp'],['cert-grid','cert']].forEach(([id,key])=>{
+          const el=document.getElementById(id);
+          if(!el) return;
+          const clone=el.cloneNode(true);
+          clone.querySelectorAll('.del-chip-btn,.del-card-btn,.add-chip-btn').forEach(b=>b.remove());
+          d[key]=clone.innerHTML;
+        });
+        localStorage.setItem(_STRUCT,JSON.stringify(d));
+      } catch(e){}
+    }
+
+    // Load saved link hrefs
+    function _loadLinks(){
+      try {
+        const d=JSON.parse(localStorage.getItem(_LINKS)||'{}');
+        if(d['linkedin-url']) document.querySelectorAll('[data-link-key="linkedin-url"]').forEach(a=>a.href=d['linkedin-url']);
+        if(d['resume-url']) document.querySelectorAll('[data-link-key="resume-url"]').forEach(a=>{
+          a.href=d['resume-url']; a.target='_blank'; a.rel='noopener noreferrer';
+        });
+      } catch(e){}
+    }
+
+    function _loadContent(){
+      try {
+        const d=JSON.parse(localStorage.getItem(_STORE)||'{}');
+        Object.entries(d).forEach(([k,v])=>{
+          const el=document.querySelector(`[data-key="${k}"]`);
+          if(el) el.innerHTML=v;
+        });
+      } catch(e){}
+    }
+
+    function _saveContent(){
+      try {
+        _saveStructure();
+        const d=JSON.parse(localStorage.getItem(_STORE)||'{}');
+        document.querySelectorAll('[data-key]').forEach(el=>{ d[el.dataset.key]=el.innerHTML; });
+        localStorage.setItem(_STORE,JSON.stringify(d));
+        const msg=document.getElementById('edit-saved-msg');
+        msg.textContent='Saved'; msg.classList.add('show');
+        setTimeout(()=>msg.classList.remove('show'),2200);
+      } catch(e){}
+      _pushLiveContent();
+    }
+
+    async function _fetchLiveContent(){
+      try {
+        const res=await fetch(_GH_RAW+'?_='+Date.now());
+        if(!res.ok) return;
+        const d=await res.json();
+        if(d.content) localStorage.setItem(_STORE,JSON.stringify(d.content));
+        if(d.struct) localStorage.setItem(_STRUCT,JSON.stringify(d.struct));
+        if(d.links) localStorage.setItem(_LINKS,JSON.stringify(d.links));
+        _loadStructure(); _loadContent(); _loadLinks();
+      } catch(e){}
+    }
+
+    async function _pushLiveContent(){
+      const token=localStorage.getItem(_SYNC);
+      if(!token) return;
+      const msg=document.getElementById('edit-saved-msg');
+      try {
+        const infoRes=await fetch(_GH_API,{headers:{Authorization:`Bearer ${token}`}});
+        if(!infoRes.ok) throw new Error();
+        const info=await infoRes.json();
+        const payload={
+          content:JSON.parse(localStorage.getItem(_STORE)||'{}'),
+          struct:JSON.parse(localStorage.getItem(_STRUCT)||'{}'),
+          links:JSON.parse(localStorage.getItem(_LINKS)||'{}')
+        };
+        await fetch(_GH_API,{method:'PUT',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},body:JSON.stringify({message:'Update portfolio content',content:btoa(unescape(encodeURIComponent(JSON.stringify(payload)))),sha:info.sha})});
+        if(msg){msg.textContent='Synced ✓';msg.classList.add('show');setTimeout(()=>{msg.textContent='Saved';msg.classList.remove('show');},2500);}
+      } catch(e){
+        if(msg){msg.textContent='Sync failed';msg.classList.add('show');setTimeout(()=>{msg.textContent='Saved';msg.classList.remove('show');},3000);}
+      }
+    }
+
+    function openSyncModal(){
+      const t=localStorage.getItem(_SYNC);
+      document.getElementById('sync-token').value=t?'••••••••••••':'';
+      document.getElementById('sync-modal-overlay').classList.add('open');
+      if(!t) setTimeout(()=>document.getElementById('sync-token').focus(),50);
+    }
+    function closeSyncModal(){ document.getElementById('sync-modal-overlay').classList.remove('open'); }
+    function saveSyncToken(){ const v=document.getElementById('sync-token').value.trim(); if(v&&!v.startsWith('•')) localStorage.setItem(_SYNC,v); closeSyncModal(); }
+    function clearSyncToken(){ localStorage.removeItem(_SYNC); document.getElementById('sync-token').value=''; closeSyncModal(); }
+
+    // Add delete buttons to chips and cards when in edit mode
+    function _addDeleteButtons(){
+      document.querySelectorAll('#hero-chips .hero-chip').forEach(chip=>{
+        if(chip.querySelector('.del-chip-btn')) return;
+        const b=document.createElement('button');
+        b.className='del-chip-btn'; b.textContent='×'; b.setAttribute('aria-label','Remove tag');
+        b.addEventListener('click',e=>{ e.stopPropagation(); chip.remove(); });
+        chip.appendChild(b);
+      });
+      document.querySelectorAll('#exp-grid .exp-card,#cert-grid .cert-card').forEach(card=>{
+        if(card.querySelector('.del-card-btn')) return;
+        const b=document.createElement('button');
+        b.className='del-card-btn'; b.textContent='×'; b.setAttribute('aria-label','Remove');
+        b.addEventListener('click',()=>card.remove());
+        card.appendChild(b);
+      });
+    }
+
+    function _activateEdit(){
+      document.body.classList.add('edit-mode');
+      document.querySelectorAll('[data-key]').forEach(el=>{
+        el.contentEditable='true';
+        if(el.dataset.singleline==='true'){
+          el.addEventListener('keydown',function(e){ if(e.key==='Enter'){e.preventDefault();el.blur();} });
+        }
+      });
+      _addDeleteButtons();
+      document.querySelectorAll('[data-link-key]').forEach(a=>{
+        a.addEventListener('click',_interceptLink);
+      });
+    }
+
+    function _interceptLink(e){ e.preventDefault(); openLinkModal(e.currentTarget.dataset.linkKey==='resume-url'?'resume':'linkedin'); }
+
+    function _deactivateEdit(){
+      document.body.classList.remove('edit-mode');
+      document.querySelectorAll('[data-link-key]').forEach(a=>a.removeEventListener('click',_interceptLink));
+      sessionStorage.removeItem(_SESSION);
+      document.querySelectorAll('[data-key]').forEach(el=>{ el.contentEditable='false'; });
+    }
+
+    // Add a new chip tag
+    function _addChip(){
+      const el=document.getElementById('hero-chips');
+      if(!el) return;
+      const idx=Date.now();
+      const chip=document.createElement('span');
+      chip.className='hero-chip'; chip.dataset.key=`chip-dyn-${idx}`; chip.dataset.singleline='true'; chip.contentEditable='true';
+      chip.textContent='New tag';
+      const b=document.createElement('button');
+      b.className='del-chip-btn'; b.textContent='×'; b.setAttribute('aria-label','Remove tag');
+      b.addEventListener('click',e=>{ e.stopPropagation(); chip.remove(); });
+      chip.appendChild(b);
+      el.insertBefore(chip, document.getElementById('add-chip-btn'));
+      chip.focus();
+      document.execCommand('selectAll');
+    }
+
+    // Add a new expertise card
+    function _addExpCard(){
+      const grid=document.getElementById('exp-grid');
+      if(!grid) return;
+      const idx=Date.now();
+      const n=String(grid.querySelectorAll('.exp-card').length+1).padStart(2,'0');
+      const card=document.createElement('article');
+      card.className='exp-card';
+      card.innerHTML=`<div class="exp-hd"><span class="exp-idx">/${n}</span><h3 class="exp-name" data-key="exp-n-${idx}" data-singleline="true" contenteditable="true">New area</h3></div><p class="exp-desc" data-key="exp-d-${idx}" contenteditable="true">Add a description here.</p><div class="exp-line"></div>`;
+      const b=document.createElement('button');
+      b.className='del-card-btn'; b.textContent='×'; b.setAttribute('aria-label','Remove');
+      b.addEventListener('click',()=>card.remove());
+      card.appendChild(b);
+      grid.appendChild(card);
+      card.querySelector('.exp-name').focus();
+      document.execCommand('selectAll');
+    }
+
+    // Add a new certification card
+    function _addCertCard(){
+      const grid=document.getElementById('cert-grid');
+      if(!grid) return;
+      const idx=Date.now();
+      const card=document.createElement('article');
+      card.className='cert-card';
+      card.innerHTML=`<div><div class="cert-card-hd"><div class="cert-icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div><div class="cert-check"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><h3 class="cert-card-name" data-key="cert-n-${idx}" data-singleline="true" contenteditable="true">New certification</h3><p class="cert-card-domain" data-key="cert-dom-${idx}" data-singleline="true" contenteditable="true">Domain</p></div><div class="cert-card-footer"><span class="cert-badge">Certified</span><div class="cert-badge-dot"></div></div>`;
+      const b=document.createElement('button');
+      b.className='del-card-btn'; b.textContent='×'; b.setAttribute('aria-label','Remove');
+      b.addEventListener('click',()=>card.remove());
+      card.appendChild(b);
+      grid.appendChild(card);
+      card.querySelector('.cert-card-name').focus();
+      document.execCommand('selectAll');
+    }
+
+    function openLogin(){
+      document.getElementById('login-overlay').classList.add('open');
+      setTimeout(()=>document.getElementById('login-pass').focus(),50);
+    }
+    function closeLogin(){
+      document.getElementById('login-overlay').classList.remove('open');
+      document.getElementById('login-err').classList.remove('show');
+      document.getElementById('login-pass').value='';
+    }
+    function logout(){ _deactivateEdit(); }
+
+    // Link modal
+    function openLinkModal(field='all'){
+      try {
+        const d=JSON.parse(localStorage.getItem(_LINKS)||'{}');
+        document.getElementById('link-linkedin').value=d['linkedin-url']||'https://www.linkedin.com/in/soyeonkoo97';
+        document.getElementById('link-resume').value=d['resume-url']||'';
+      } catch(e){}
+      const liField=document.getElementById('link-field-linkedin');
+      const reField=document.getElementById('link-field-resume');
+      const ttl=document.querySelector('#link-modal-overlay .login-ttl');
+      if(field==='resume'){ liField.style.display='none'; reField.style.display=''; ttl.textContent='Resume URL'; }
+      else if(field==='linkedin'){ liField.style.display=''; reField.style.display='none'; ttl.textContent='LinkedIn URL'; }
+      else { liField.style.display=''; reField.style.display=''; ttl.textContent='Edit Links'; }
+      document.getElementById('link-modal-overlay').classList.add('open');
+      setTimeout(()=>document.getElementById(field==='linkedin'?'link-linkedin':'link-resume').focus(),50);
+    }
+    function closeLinkModal(){ document.getElementById('link-modal-overlay').classList.remove('open'); }
+    function saveLinkModal(){
+      try {
+        const d=JSON.parse(localStorage.getItem(_LINKS)||'{}');
+        const _url=v=>v&&!/^https?:\/\//i.test(v)?'https://'+v:v;
+        const li=_url(document.getElementById('link-linkedin').value.trim());
+        const re=_url(document.getElementById('link-resume').value.trim());
+        if(li){ d['linkedin-url']=li; document.querySelectorAll('[data-link-key="linkedin-url"]').forEach(a=>a.href=li); }
+        if(re){ d['resume-url']=re; document.querySelectorAll('[data-link-key="resume-url"]').forEach(a=>{ a.href=re; a.target='_blank'; a.rel='noopener noreferrer'; }); }
+        localStorage.setItem(_LINKS,JSON.stringify(d));
+      } catch(e){}
+      closeLinkModal();
+    }
+
+    document.getElementById('login-submit').addEventListener('click',()=>{
+      const p=document.getElementById('login-pass').value;
+      if(p===_C.p){ sessionStorage.setItem(_SESSION,'1'); closeLogin(); _activateEdit(); }
+      else { document.getElementById('login-err').classList.add('show'); }
+    });
+    document.getElementById('login-pass').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('login-submit').click(); });
+    document.getElementById('login-x').addEventListener('click',closeLogin);
+    document.getElementById('login-overlay').addEventListener('click',e=>{ if(e.target===document.getElementById('login-overlay')) closeLogin(); });
+    document.getElementById('footer-login-btn').addEventListener('click',e=>{ e.preventDefault(); openLogin(); });
+    document.getElementById('edit-save').addEventListener('click',_saveContent);
+    document.getElementById('edit-logout-bar').addEventListener('click',logout);
+    document.getElementById('edit-links-btn').addEventListener('click',openLinkModal);
+    document.getElementById('link-modal-close').addEventListener('click',closeLinkModal);
+    document.getElementById('link-modal-overlay').addEventListener('click',e=>{ if(e.target===document.getElementById('link-modal-overlay')) closeLinkModal(); });
+    document.getElementById('link-modal-save').addEventListener('click',saveLinkModal);
+    document.getElementById('edit-sync-btn').addEventListener('click',openSyncModal);
+    document.getElementById('sync-modal-close').addEventListener('click',closeSyncModal);
+    document.getElementById('sync-modal-overlay').addEventListener('click',e=>{ if(e.target===document.getElementById('sync-modal-overlay')) closeSyncModal(); });
+    document.getElementById('sync-modal-save').addEventListener('click',saveSyncToken);
+    document.getElementById('sync-modal-clear').addEventListener('click',clearSyncToken);
+    document.getElementById('add-chip-btn').addEventListener('click',_addChip);
+    document.getElementById('add-exp-btn').addEventListener('click',_addExpCard);
+    document.getElementById('add-cert-btn').addEventListener('click',_addCertCard);
+
+    _loadStructure();
+    _loadContent();
+    _loadLinks();
+    if(_isAuth()) _activateEdit();
+    _fetchLiveContent();
+  </script>
+</body>
+</html>

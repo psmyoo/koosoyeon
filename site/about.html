@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Koo Soyeon — Senior Environmental Analyst with over eight years of experience in air quality monitoring.">
+  <title>About — Koo Soyeon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #111111; --surface: #181818; --border: #232323;
+      --accent: #2DD4BF; --text: #FFFFFF; --text-2: #A3A3A3; --text-3: #777777;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.5; }
+    ::selection { background: rgba(45,212,191,0.15); color: #fff; }
+    ::-webkit-scrollbar { width: 2px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--accent); }
+    :focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px) { .container { padding: 0 48px; } }
+
+    /* ── Navigation ── */
+    #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .5s, border-color .5s; border-bottom: 1px solid transparent; }
+    #nav.scrolled, #nav.menu-open { background: rgba(17,17,17,.95); backdrop-filter: blur(12px); border-color: var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; letter-spacing: .25em; color: var(--accent); text-decoration: none; transition: color .2s; position: relative; z-index: 60; }
+    .nav-logo:hover { color: #fff; }
+    .nav-links { display: none; list-style: none; gap: 32px; }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+    .nav-links a { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .hamburger { display: flex; flex-direction: column; justify-content: center; gap: 6px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px; position: relative; z-index: 60; }
+    @media (min-width: 768px) { .hamburger { display: none; } }
+    .hamburger span { display: block; width: 20px; height: 1px; background: var(--text); transition: transform .25s ease, opacity .2s; transform-origin: center; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(0, 4.5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(0, -4.5px); }
+    #mobile-menu { display: none; position: fixed; inset: 0; z-index: 40; background: var(--bg); flex-direction: column; justify-content: center; padding: 0 32px; }
+    #mobile-menu.open { display: flex; }
+    .mob-links { list-style: none; }
+    .mob-links li { margin-bottom: 32px; }
+    .mob-links a { font-family: 'Space Mono', monospace; font-size: clamp(1.1rem, 5.5vw, 1.8rem); letter-spacing: .1em; text-transform: uppercase; color: var(--text); text-decoration: none; transition: color .2s; display: flex; align-items: center; min-height: 44px; padding: 8px 0; }
+    .mob-links a:hover { color: var(--accent); }
+    .mob-links a.active { color: var(--accent); }
+    .mob-footer { position: absolute; bottom: 40px; left: 32px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #2A2A2A; }
+
+    /* ── Page ── */
+    .page-wrap { min-height: 100vh; padding-top: 64px; }
+    .page-label { display: flex; align-items: center; gap: 16px; padding: 40px 0; border-bottom: 1px solid var(--border); }
+    @media (min-width: 768px) { .page-label { padding: 64px 0; } }
+    .page-label-text { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .25em; text-transform: uppercase; }
+    .page-label-accent { color: var(--accent); }
+    .page-label-muted { color: var(--text-3); }
+    .page-dash { width: 32px; height: 1px; background: #2A2A2A; }
+
+    /* ── Two column ── */
+    .about-layout { display: grid; grid-template-columns: 1fr; gap: 0; padding: 40px 0; }
+    @media (min-width: 768px) { .about-layout { padding: 64px 0; } }
+    @media (min-width: 1024px) { .about-layout { grid-template-columns: 480px 1fr; gap: 80px; } }
+    @media (min-width: 1280px) { .about-layout { gap: 112px; } }
+
+    /* Photo */
+    .photo-col { margin-bottom: 48px; }
+    @media (min-width: 1024px) { .photo-col { margin-bottom: 0; } }
+    .photo-sticky { }
+    @media (min-width: 1024px) { .photo-sticky { position: sticky; top: 88px; } }
+    .photo-wrap { position: relative; width: 100%; overflow: hidden; background: var(--surface); }
+    .photo-wrap { aspect-ratio: 4/3; }
+    @media (min-width: 1024px) { .photo-wrap { aspect-ratio: 3/4; } }
+    .photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .photo-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 96px; background: linear-gradient(to top, var(--bg), transparent); }
+    .photo-info { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .photo-name { font-size: 16px; font-weight: 600; letter-spacing: -.01em; color: var(--text); margin-bottom: 4px; }
+    .photo-role { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); }
+
+    /* Content */
+    .content-col { }
+    .content-section { margin-bottom: 64px; }
+    .content-section:last-child { margin-bottom: 0; }
+    .content-sec-label { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--text-3); margin-bottom: 32px; }
+    .content-lead { font-size: clamp(1.3rem, 2.5vw, 1.65rem); font-weight: 300; line-height: 1.45; letter-spacing: -.01em; color: var(--text); margin-bottom: 32px; }
+    .content-body p { font-size: 17px; color: var(--text-2); line-height: 1.8; font-weight: 300; margin-bottom: 20px; }
+    .content-body p:last-child { margin-bottom: 0; }
+    .content-divider { width: 100%; height: 1px; background: var(--border); margin: 48px 0; }
+    .personal-cards { display: flex; flex-direction: column; gap: 16px; }
+    .personal-card { display: flex; align-items: flex-start; gap: 20px; padding: 24px; border: 1px solid var(--border); background: #161616; transition: border-color .3s; }
+    .personal-card:hover { border-color: var(--accent); }
+    .personal-card-icon { width: 44px; height: 44px; border: 1px solid #232323; display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; transition: border-color .3s; }
+    .personal-card:hover .personal-card-icon { border-color: var(--accent); }
+    .personal-card-title { font-size: 16px; font-weight: 500; color: var(--text); letter-spacing: -.01em; margin-bottom: 6px; }
+    .personal-card-body { font-size: 14px; color: var(--text-2); line-height: 1.7; font-weight: 300; }
+
+    /* ── Contact ── */
+    .contact-section { border-top: 1px solid var(--border); padding: 64px 0; }
+    @media (min-width: 768px) { .contact-section { padding: 112px 0; } }
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: end; }
+    @media (min-width: 1024px) { .contact-grid { grid-template-columns: 1fr 1fr; gap: 96px; } }
+    .contact-lead { font-size: clamp(1.6rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.2; letter-spacing: -.02em; color: var(--text); margin-bottom: 16px; }
+    .contact-sub { font-size: 16px; color: var(--text-3); font-weight: 300; line-height: 1.6; max-width: 320px; }
+    .contact-cta { display: flex; flex-direction: column; }
+    @media (min-width: 1024px) { .contact-cta { align-items: flex-end; } }
+    .li-btn { display: flex; align-items: center; justify-content: space-between; gap: 16px; border: 1px solid #2A2A2A; padding: 20px 32px; text-decoration: none; transition: border-color .3s, background .3s; width: 100%; }
+    @media (min-width: 640px) { .li-btn { width: auto; } }
+    .li-btn:hover { border-color: var(--accent); background: rgba(45,212,191,.05); }
+    .li-label { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--text); }
+    .li-icon { color: var(--text-3); transition: color .3s, transform .3s; flex-shrink: 0; }
+    .li-btn:hover .li-icon { color: var(--accent); transform: translate(2px,-2px); }
+    .li-url { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .15em; color: #2A2A2A; margin-top: 12px; }
+    .sec-label { display: flex; align-items: center; gap: 16px; margin-bottom: 48px; }
+    .sec-num { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--accent); }
+    .sec-dash { width: 32px; height: 1px; background: #2A2A2A; }
+    .sec-title { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--text-3); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 56px 0 28px; }
+    @media (min-width: 768px) { footer { padding: 80px 0 32px; } }
+    @media (min-width: 1024px) { footer { padding: 96px 0 32px; } }
+    .footer-top { display: grid; grid-template-columns: 1fr; gap: 32px; padding-bottom: 48px; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+    @media (min-width: 1024px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; padding-bottom: 64px; margin-bottom: 32px; } }
+    .footer-contact-right { display: flex; flex-direction: column; }
+    @media (min-width: 1024px) { .footer-contact-right { align-items: flex-end; } }
+    .footer-bottom { display: flex; flex-direction: column; gap: 6px; }
+    @media (min-width: 640px) { .footer-bottom { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .footer-txt { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-3); }
+    .footer-txt-accent { color: var(--accent); }
+    .contact-lead { font-size: clamp(1.3rem, 3vw, 2.8rem); }
+    .contact-sub { font-size: 15px; }
+
+    /* Animations */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: .08s; }
+    .fade-up.d2 { transition-delay: .16s; }
+    .fade-up.d3 { transition-delay: .24s; }
+
+    /* ── Auth / Edit mode ── */
+    .footer-login { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); text-decoration:none; transition:color .2s; }
+    .footer-login:hover { color:var(--text); }
+    .edit-mode .footer-login { display:none; }
+    .edit-mode [data-key] { outline:1px dashed rgba(45,212,191,.22); border-radius:2px; cursor:text; }
+    .edit-mode [data-key]:hover { outline-color:rgba(45,212,191,.5); background:rgba(45,212,191,.04); }
+    .edit-mode [data-key]:focus { outline-color:var(--accent) !important; background:rgba(45,212,191,.07); outline-offset:2px; }
+    .edit-bar { position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(100px); background:#181818; border:1px solid var(--border); padding:14px 20px; display:flex; align-items:center; gap:10px; z-index:200; box-shadow:0 8px 40px rgba(0,0,0,.6); transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .3s; opacity:0; pointer-events:none; }
+    .edit-mode .edit-bar { transform:translateX(-50%) translateY(0); opacity:1; pointer-events:all; }
+    .edit-save { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; background:var(--accent); color:#000; border:none; padding:10px 18px; cursor:pointer; transition:opacity .2s; }
+    .edit-save:hover { opacity:.85; }
+    .edit-logout { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; background:none; color:var(--text-3); border:1px solid var(--border); padding:10px 18px; cursor:pointer; transition:color .2s; }
+    .edit-logout:hover { color:var(--text); }
+    .edit-saved-msg { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); opacity:0; transition:opacity .3s; }
+    .edit-saved-msg.show { opacity:1; }
+    .login-overlay { display:none; position:fixed; inset:0; z-index:300; background:rgba(0,0,0,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); align-items:center; justify-content:center; }
+    .login-overlay.open { display:flex; }
+    .login-modal { position:relative; background:#181818; border:1px solid var(--border); padding:48px 40px; width:100%; max-width:380px; margin:0 20px; }
+    .login-ttl { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.25em; text-transform:uppercase; color:var(--accent); margin-bottom:32px; }
+    .login-field { margin-bottom:16px; }
+    .login-lbl { display:block; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--text-3); margin-bottom:8px; }
+    .login-inp { width:100%; background:var(--bg); border:1px solid var(--border); color:var(--text); font-family:'Inter',sans-serif; font-size:15px; padding:12px 14px; outline:none; transition:border-color .2s; }
+    .login-inp:focus { border-color:var(--accent); }
+    .login-err { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.1em; color:#f87171; margin-top:12px; display:none; }
+    .login-err.show { display:block; }
+    .login-btn { width:100%; background:var(--accent); color:#000; border:none; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; padding:14px; cursor:pointer; margin-top:24px; transition:opacity .2s; }
+    .login-btn:hover { opacity:.85; }
+    .login-x { position:absolute; top:14px; right:14px; background:none; border:none; color:var(--text-3); cursor:pointer; padding:8px; line-height:1; font-size:18px; transition:color .2s; }
+    .login-x:hover { color:var(--text); }
+    .edit-links { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; background:none; color:var(--text-3); border:1px solid var(--border); padding:10px 18px; cursor:pointer; transition:color .2s; }
+    .edit-links:hover { color:var(--text); }
+    .link-modal-overlay { display:none; position:fixed; inset:0; z-index:300; background:rgba(0,0,0,.75); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); align-items:center; justify-content:center; }
+    .link-modal-overlay.open { display:flex; }
+    .photo-upload-overlay { display:none; position:absolute; inset:0; background:rgba(0,0,0,.52); flex-direction:column; align-items:center; justify-content:center; gap:8px; cursor:pointer; transition:background .2s; }
+    .edit-mode .photo-upload-overlay { display:flex; }
+    .photo-upload-overlay:hover { background:rgba(0,0,0,.7); }
+    .photo-upload-lbl { font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#fff; pointer-events:none; }
+
+    /* ── Mobile / Tablet responsive overrides ── */
+    @media (max-width: 479px) {
+      .container { padding: 0 16px; }
+      .content-body p { font-size: 15px; }
+      .contact-grid { gap: 32px; }
+      .content-section { margin-bottom: 48px; }
+    }
+    @media (max-width: 640px) {
+      .photo-col { margin-bottom: 32px; }
+      .edit-bar { left: 16px; right: 16px; width: auto; transform: translateY(120px); flex-wrap: wrap; justify-content: center; padding: 12px 14px; bottom: 16px; }
+      .edit-mode .edit-bar { transform: translateY(0); }
+      .edit-save, .edit-links, .edit-logout { flex: 1; }
+      .login-modal { padding: 32px 20px; }
+      .login-inp { font-size: 16px; }
+    }
+    @media (min-width: 641px) and (max-width: 1023px) {
+      .about-layout { padding: 48px 0; }
+      .footer-top { gap: clamp(32px, 6vw, 96px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <header id="nav" role="banner">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" aria-label="Home">KS</a>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links" role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" data-link-key="resume-url">Resume</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <nav>
+      <ul class="mob-links" role="list">
+        <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+        <li><a href="about.html" class="active" onclick="closeMenu()">About</a></li>
+        <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+        <li><a href="#" data-link-key="resume-url" onclick="closeMenu()">Resume</a></li>
+      </ul>
+    </nav>
+    <p class="mob-footer">Koo Soyeon — Senior Environmental Analyst</p>
+  </div>
+
+  <main id="main">
+    <div class="page-wrap">
+      <div class="container">
+
+        <!-- Page label -->
+        <div class="page-label fade-up">
+          <span class="page-label-text page-label-accent">About</span>
+          <div class="page-dash"></div>
+          <span class="page-label-text page-label-muted">Koo Soyeon</span>
+        </div>
+
+        <!-- Layout -->
+        <div class="about-layout">
+
+          <!-- Photo -->
+          <div class="photo-col fade-up">
+            <div class="photo-sticky">
+              <div class="photo-wrap">
+                <img src="profile.avif" alt="Koo Soyeon, Senior Environmental Analyst" id="profile-img">
+                <div class="photo-fade" aria-hidden="true"></div>
+                <label class="photo-upload-overlay" aria-label="Change photo">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                  <span class="photo-upload-lbl">Change photo</span>
+                  <input type="file" id="photo-upload" accept="image/*" hidden>
+                </label>
+              </div>
+              <div class="photo-info">
+                <p class="photo-name">Koo Soyeon</p>
+                <p class="photo-role">Senior Environmental Analyst</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="content-col">
+
+            <div class="content-section">
+              <p class="content-sec-label fade-up">Professional</p>
+              <p class="content-lead fade-up d1" data-key="pro-lead">Over eight years spent at the boundary of science and industrial accountability.</p>
+              <div class="content-body">
+                <p class="fade-up d2" data-key="pro-body-1">Koo Soyeon has built her career around the precise measurement of what cannot be seen. Working across industrial sites and ambient monitoring networks, she applies validated analytical methods to characterize pollutant concentrations, trace emission sources, and verify compliance with environmental standards.</p>
+                <p class="fade-up d3" data-key="pro-body-2">Her expertise spans the detection of aldehydes, phenols, hydrogen chloride, volatile organic compounds, and trace metals — pollutant classes that demand both methodological rigor and careful interpretation. She operates instrumentation including ICP, GC, AA, and GC-MS systems, and maintains a consistent focus on data integrity throughout the analytical process.</p>
+              </div>
+            </div>
+
+            <div class="content-divider fade-up"></div>
+
+            <div class="content-section">
+              <p class="content-sec-label fade-up">Beyond the lab</p>
+              <div class="personal-cards">
+                <div class="personal-card fade-up d1">
+                  <div class="personal-card-icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M4.9 4.9c3.1 3.1 3.1 8.1 0 11.2M19.1 4.9c-3.1 3.1-3.1 8.1 0 11.2M2 12h4M18 12h4M12 2v4M12 18v4"/></svg>
+                  </div>
+                  <div>
+                    <p class="personal-card-title" data-key="p-baseball-title" data-singleline="true">Baseball</p>
+                    <p class="personal-card-body" data-key="p-baseball-body">An avid follower who attends games whenever the schedule allows — drawn to the sport's energy, strategy, and competitive spirit.</p>
+                  </div>
+                </div>
+                <div class="personal-card fade-up d2">
+                  <div class="personal-card-icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  </div>
+                  <div>
+                    <p class="personal-card-title" data-key="p-travel-title" data-singleline="true">Travel</p>
+                    <p class="personal-card-body" data-key="p-travel-body">A passionate explorer who embraces every opportunity to discover new destinations, cultures, and landscapes around the world.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-contact-left">
+          <p class="contact-lead">Available for professional consultation and technical collaboration.</p>
+          <p class="contact-sub">Reach out via LinkedIn to discuss projects, partnerships, or just to say hi!</p>
+        </div>
+        <div class="footer-contact-right">
+          <a href="https://www.linkedin.com/in/soyeonkoo97" target="_blank" rel="noopener noreferrer" class="li-btn" data-link-key="linkedin-url" aria-label="View Koo Soyeon's LinkedIn profile (opens in new tab)">
+            <span class="li-label">View LinkedIn Profile</span>
+            <svg class="li-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-txt footer-txt-accent">Koo Soyeon</span>
+        <span class="footer-txt footer-txt-accent">Senior Environmental Analyst</span>
+        <a href="#" class="footer-login" id="footer-login-btn">Login</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link editor modal -->
+  <div class="link-modal-overlay" id="link-modal-overlay">
+    <div class="login-modal">
+      <button class="login-x" id="link-modal-close">×</button>
+      <p class="login-ttl">Edit Links</p>
+      <div class="login-field" id="link-field-linkedin">
+        <label class="login-lbl" for="link-linkedin">LinkedIn URL</label>
+        <input class="login-inp" id="link-linkedin" type="url" placeholder="https://linkedin.com/in/...">
+      </div>
+      <div class="login-field" id="link-field-resume">
+        <label class="login-lbl" for="link-resume">Resume URL</label>
+        <input class="login-inp" id="link-resume" type="url" placeholder="Paste link or file URL">
+      </div>
+      <button class="login-btn" id="link-modal-save">Save</button>
+    </div>
+  </div>
+
+  <!-- Login modal -->
+  <div class="login-overlay" id="login-overlay" role="dialog" aria-modal="true" aria-label="Editor login">
+    <div class="login-modal">
+      <button class="login-x" id="login-x" aria-label="Close">×</button>
+      <p class="login-ttl">Editor Login</p>
+      <div class="login-field">
+        <label class="login-lbl" for="login-pass">Password</label>
+        <input class="login-inp" id="login-pass" type="password" autocomplete="current-password">
+      </div>
+      <p class="login-err" id="login-err">Incorrect password.</p>
+      <button class="login-btn" id="login-submit">Enter</button>
+    </div>
+  </div>
+
+  <!-- Edit toolbar -->
+  <div class="edit-bar" id="edit-bar" role="toolbar" aria-label="Edit controls">
+    <button class="edit-save" id="edit-save">Save changes</button>
+    <button class="edit-links" id="edit-links-btn">Edit links</button>
+    <button class="edit-links" id="edit-sync-btn">Cloud sync</button>
+    <button class="edit-logout" id="edit-logout-bar">Log out</button>
+    <span class="edit-saved-msg" id="edit-saved-msg" aria-live="polite">Saved</span>
+  </div>
+
+  <!-- Cloud sync settings modal -->
+  <div class="login-overlay" id="sync-modal-overlay">
+    <div class="login-modal">
+      <button class="login-x" id="sync-modal-close">×</button>
+      <p class="login-ttl">Cloud Sync</p>
+      <p style="font-size:12px;color:var(--text-3);line-height:1.75;margin-bottom:24px;font-family:'Space Mono',monospace;letter-spacing:.04em;">Saves will push edits to the live site. Generate a token at github.com/settings/tokens — Fine-grained, Contents: Read &amp; Write, for this repo.</p>
+      <div class="login-field">
+        <label class="login-lbl" for="sync-token">GitHub Token</label>
+        <input class="login-inp" id="sync-token" type="password" placeholder="github_pat_...">
+      </div>
+      <button class="login-btn" id="sync-modal-save">Save token</button>
+      <button class="login-btn" id="sync-modal-clear" style="margin-top:8px;background:transparent;color:var(--text-3);border:1px solid var(--border);">Remove token</button>
+    </div>
+  </div>
+
+  <script>
+    // Nav scroll
+    window.addEventListener('scroll',()=>{
+      document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+    },{passive:true});
+
+    // Hamburger
+    const btn=document.getElementById('hamburger'), menu=document.getElementById('mobile-menu');
+    function closeMenu(){
+      menu.classList.remove('open'); btn.classList.remove('open');
+      btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Open menu');
+      document.body.style.overflow='';
+      document.getElementById('nav').classList.remove('menu-open');
+    }
+    btn.addEventListener('click',()=>{
+      const open=menu.classList.toggle('open');
+      btn.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',String(open));
+      btn.setAttribute('aria-label',open?'Close menu':'Open menu');
+      document.body.style.overflow=open?'hidden':'';
+      document.getElementById('nav').classList.toggle('menu-open',open);
+    });
+
+    // Scroll fade-in
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+    },{rootMargin:'-60px'});
+    document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+
+    // ── Auth & Edit ──
+    const _STORE='ks_content', _SESSION='ks_auth', _LINKS='ks_links', _SYNC='ks_gh_token';
+    const _GH_API='https://api.github.com/repos/psyoo34/koosoyeon/contents/site/live-content.json';
+    const _GH_RAW='https://raw.githubusercontent.com/psyoo34/koosoyeon/main/site/live-content.json';
+    const _C={p:'koo2024!'};
+
+    function _isAuth(){ return sessionStorage.getItem(_SESSION)==='1'; }
+
+    function _loadLinks(){
+      try {
+        const d=JSON.parse(localStorage.getItem(_LINKS)||'{}');
+        if(d['linkedin-url']) document.querySelectorAll('[data-link-key="linkedin-url"]').forEach(a=>a.href=d['linkedin-url']);
+        if(d['resume-url']) document.querySelectorAll('[data-link-key="resume-url"]').forEach(a=>{
+          a.href=d['resume-url']; a.target='_blank'; a.rel='noopener noreferrer';
+        });
+      } catch(e){}
+    }
+
+    function _loadContent(){
+      try {
+        const d=JSON.parse(localStorage.getItem(_STORE)||'{}');
+        Object.entries(d).forEach(([k,v])=>{
+          const el=document.querySelector(`[data-key="${k}"]`);
+          if(el) el.innerHTML=v;
+        });
+        // Restore profile photo
+        if(d['photo-src']){ const img=document.getElementById('profile-img'); if(img) img.src=d['photo-src']; }
+      } catch(e){}
+    }
+
+    function _saveContent(){
+      try {
+        const d=JSON.parse(localStorage.getItem(_STORE)||'{}');
+        document.querySelectorAll('[data-key]').forEach(el=>{ d[el.dataset.key]=el.innerHTML; });
+        localStorage.setItem(_STORE,JSON.stringify(d));
+        const msg=document.getElementById('edit-saved-msg');
+        msg.textContent='Saved'; msg.classList.add('show');
+        setTimeout(()=>msg.classList.remove('show'),2200);
+      } catch(e){}
+      _pushLiveContent();
+    }
+
+    async function _fetchLiveContent(){
+      try {
+        const res=await fetch(_GH_RAW+'?_='+Date.now());
+        if(!res.ok) return;
+        const d=await res.json();
+        if(d.content) localStorage.setItem(_STORE,JSON.stringify(d.content));
+        if(d.links) localStorage.setItem(_LINKS,JSON.stringify(d.links));
+        _loadContent(); _loadLinks();
+      } catch(e){}
+    }
+
+    async function _pushLiveContent(){
+      const token=localStorage.getItem(_SYNC);
+      if(!token) return;
+      const msg=document.getElementById('edit-saved-msg');
+      try {
+        const infoRes=await fetch(_GH_API,{headers:{Authorization:`Bearer ${token}`}});
+        if(!infoRes.ok) throw new Error();
+        const info=await infoRes.json();
+        const payload={
+          content:JSON.parse(localStorage.getItem(_STORE)||'{}'),
+          links:JSON.parse(localStorage.getItem(_LINKS)||'{}')
+        };
+        await fetch(_GH_API,{method:'PUT',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json'},body:JSON.stringify({message:'Update portfolio content',content:btoa(unescape(encodeURIComponent(JSON.stringify(payload)))),sha:info.sha})});
+        if(msg){msg.textContent='Synced ✓';msg.classList.add('show');setTimeout(()=>{msg.textContent='Saved';msg.classList.remove('show');},2500);}
+      } catch(e){
+        if(msg){msg.textContent='Sync failed';msg.classList.add('show');setTimeout(()=>{msg.textContent='Saved';msg.classList.remove('show');},3000);}
+      }
+    }
+
+    function openSyncModal(){
+      const t=localStorage.getItem(_SYNC);
+      document.getElementById('sync-token').value=t?'••••••••••••':'';
+      document.getElementById('sync-modal-overlay').classList.add('open');
+      if(!t) setTimeout(()=>document.getElementById('sync-token').focus(),50);
+    }
+    function closeSyncModal(){ document.getElementById('sync-modal-overlay').classList.remove('open'); }
+    function saveSyncToken(){ const v=document.getElementById('sync-token').value.trim(); if(v&&!v.startsWith('•')) localStorage.setItem(_SYNC,v); closeSyncModal(); }
+    function clearSyncToken(){ localStorage.removeItem(_SYNC); document.getElementById('sync-token').value=''; closeSyncModal(); }
+
+    function _interceptLink(e){ e.preventDefault(); openLinkModal(e.currentTarget.dataset.linkKey==='resume-url'?'resume':'linkedin'); }
+
+    function _activateEdit(){
+      document.body.classList.add('edit-mode');
+      document.querySelectorAll('[data-key]').forEach(el=>{
+        el.contentEditable='true';
+        if(el.dataset.singleline==='true'){
+          el.addEventListener('keydown',function(e){ if(e.key==='Enter'){e.preventDefault();el.blur();} });
+        }
+      });
+      document.querySelectorAll('[data-link-key]').forEach(a=>a.addEventListener('click',_interceptLink));
+    }
+
+    function _deactivateEdit(){
+      document.body.classList.remove('edit-mode');
+      sessionStorage.removeItem(_SESSION);
+      document.querySelectorAll('[data-key]').forEach(el=>{ el.contentEditable='false'; });
+      document.querySelectorAll('[data-link-key]').forEach(a=>a.removeEventListener('click',_interceptLink));
+    }
+
+    function openLogin(){
+      document.getElementById('login-overlay').classList.add('open');
+      setTimeout(()=>document.getElementById('login-pass').focus(),50);
+    }
+    function closeLogin(){
+      document.getElementById('login-overlay').classList.remove('open');
+      document.getElementById('login-err').classList.remove('show');
+      document.getElementById('login-pass').value='';
+    }
+    function logout(){ _deactivateEdit(); }
+
+    // Link modal
+    function openLinkModal(field='all'){
+      try {
+        const d=JSON.parse(localStorage.getItem(_LINKS)||'{}');
+        document.getElementById('link-linkedin').value=d['linkedin-url']||'https://www.linkedin.com/in/soyeonkoo97';
+        document.getElementById('link-resume').value=d['resume-url']||'';
+      } catch(e){}
+      const liField=document.getElementById('link-field-linkedin');
+      const reField=document.getElementById('link-field-resume');
+      const ttl=document.querySelector('#link-modal-overlay .login-ttl');
+      if(field==='resume'){ liField.style.display='none'; reField.style.display=''; ttl.textContent='Resume URL'; }
+      else if(field==='linkedin'){ liField.style.display=''; reField.style.display='none'; ttl.textContent='LinkedIn URL'; }
+      else { liField.style.display=''; reField.style.display=''; ttl.textContent='Edit Links'; }
+      document.getElementById('link-modal-overlay').classList.add('open');
+      setTimeout(()=>document.getElementById(field==='linkedin'?'link-linkedin':'link-resume').focus(),50);
+    }
+    function closeLinkModal(){ document.getElementById('link-modal-overlay').classList.remove('open'); }
+    function saveLinkModal(){
+      try {
+        const d=JSON.parse(localStorage.getItem(_LINKS)||'{}');
+        const _url=v=>v&&!/^https?:\/\//i.test(v)?'https://'+v:v;
+        const li=_url(document.getElementById('link-linkedin').value.trim());
+        const re=_url(document.getElementById('link-resume').value.trim());
+        if(li){ d['linkedin-url']=li; document.querySelectorAll('[data-link-key="linkedin-url"]').forEach(a=>a.href=li); }
+        if(re){ d['resume-url']=re; document.querySelectorAll('[data-link-key="resume-url"]').forEach(a=>{ a.href=re; a.target='_blank'; a.rel='noopener noreferrer'; }); }
+        localStorage.setItem(_LINKS,JSON.stringify(d));
+      } catch(e){}
+      closeLinkModal();
+    }
+
+    // Photo upload
+    document.getElementById('photo-upload').addEventListener('change',function(e){
+      const file=e.target.files[0]; if(!file) return;
+      const reader=new FileReader();
+      reader.onload=function(ev){
+        const src=ev.target.result;
+        document.getElementById('profile-img').src=src;
+        try {
+          const d=JSON.parse(localStorage.getItem(_STORE)||'{}');
+          d['photo-src']=src;
+          localStorage.setItem(_STORE,JSON.stringify(d));
+        } catch(e){}
+      };
+      reader.readAsDataURL(file);
+    });
+
+    document.getElementById('login-submit').addEventListener('click',()=>{
+      const p=document.getElementById('login-pass').value;
+      if(p===_C.p){ sessionStorage.setItem(_SESSION,'1'); closeLogin(); _activateEdit(); }
+      else { document.getElementById('login-err').classList.add('show'); }
+    });
+    document.getElementById('login-pass').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('login-submit').click(); });
+    document.getElementById('login-x').addEventListener('click',closeLogin);
+    document.getElementById('login-overlay').addEventListener('click',e=>{ if(e.target===document.getElementById('login-overlay')) closeLogin(); });
+    document.getElementById('footer-login-btn').addEventListener('click',e=>{ e.preventDefault(); openLogin(); });
+    document.getElementById('edit-save').addEventListener('click',_saveContent);
+    document.getElementById('edit-logout-bar').addEventListener('click',logout);
+    document.getElementById('edit-links-btn').addEventListener('click',openLinkModal);
+    document.getElementById('link-modal-close').addEventListener('click',closeLinkModal);
+    document.getElementById('link-modal-overlay').addEventListener('click',e=>{ if(e.target===document.getElementById('link-modal-overlay')) closeLinkModal(); });
+    document.getElementById('link-modal-save').addEventListener('click',saveLinkModal);
+    document.getElementById('edit-sync-btn').addEventListener('click',openSyncModal);
+    document.getElementById('sync-modal-close').addEventListener('click',closeSyncModal);
+    document.getElementById('sync-modal-overlay').addEventListener('click',e=>{ if(e.target===document.getElementById('sync-modal-overlay')) closeSyncModal(); });
+    document.getElementById('sync-modal-save').addEventListener('click',saveSyncToken);
+    document.getElementById('sync-modal-clear').addEventListener('click',clearSyncToken);
+
+    _loadContent();
+    _loadLinks();
+    if(_isAuth()) _activateEdit();
+    _fetchLiveContent();
+  </script>
+</body>
+</html>
