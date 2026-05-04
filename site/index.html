@@ -35,7 +35,7 @@
     .nav-logo:hover { color: #fff; }
     .nav-links { display: none; list-style: none; gap: 32px; }
     @media (min-width: 768px) { .nav-links { display: flex; } }
-    .nav-links a { font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color .2s; }
+    .nav-links a { font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--text-2); text-decoration: none; transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
     .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; width: 44px; height: 44px; background: none; border: none; cursor: pointer; padding: 10px; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 60; }
     @media (min-width: 768px) { .hamburger { display: none; } }
@@ -55,7 +55,7 @@
     .mob-footer { position: absolute; bottom: 40px; left: 32px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #2A2A2A; }
 
     /* ── Hero ── */
-    #hero { position: relative; height: 100vh; min-height: 600px; display: flex; flex-direction: column; justify-content: center; padding-top: 64px; overflow: hidden; }
+    #hero { position: relative; height: 100vh; min-height: 600px; display: flex; flex-direction: column; justify-content: center; padding-top: 64px; padding-bottom: 80px; overflow: hidden; }
     #waveform { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
     .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, var(--bg) 100%); pointer-events: none; }
     .hero-content { position: relative; z-index: 10; }
@@ -84,8 +84,9 @@
     .section { padding: 64px 0; border-top: 1px solid var(--border); }
     @media (min-width: 768px) { .section { padding: 112px 0; } }
     @media (min-width: 1024px) { .section { padding: 144px 0; } }
-    .sec-label { display: flex; align-items: center; gap: 16px; margin-bottom: 64px; }
-    @media (min-width: 768px) { .sec-label { margin-bottom: 80px; } }
+    .sec-label { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
+    @media (min-width: 768px) { .sec-label { margin-bottom: 56px; } }
+    @media (min-width: 1024px) { .sec-label { margin-bottom: 80px; } }
     .sec-num { font-family: 'Space Mono', monospace; font-size: 18px; letter-spacing: .25em; text-transform: uppercase; color: var(--accent); }
     .sec-dash { width: 32px; height: 1px; background: #2A2A2A; }
     .sec-title { font-family: 'Space Mono', monospace; font-size: 18px; letter-spacing: .25em; text-transform: uppercase; color: var(--text-3); }
@@ -97,10 +98,10 @@
     .about-body { font-size: 17px; color: var(--text-2); line-height: 1.75; font-weight: 300; max-width: 680px; }
     .glance { border: 1px solid var(--border); padding: 20px; background: #161616; }
     @media (min-width: 640px) { .glance { padding: 32px; } }
-    .glance-hd { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); margin-bottom: 32px; }
+    .glance-hd { font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-3); margin-bottom: 32px; }
     .glance-row { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 20px; }
     .glance-row:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
-    .glance-lbl { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
+    .glance-lbl { font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
     .glance-val { font-size: 19px; color: var(--text); font-weight: 400; letter-spacing: -.01em; }
 
     /* ── Expertise ── */
@@ -108,6 +109,7 @@
     @media (min-width: 768px) { .exp-grid { grid-template-columns: 1fr 1fr; } }
     .exp-card { background: var(--bg); padding: 24px; transition: background .3s; }
     @media (min-width: 640px) { .exp-card { padding: 32px; } }
+    @media (min-width: 768px) { .exp-card { padding: 36px; } }
     @media (min-width: 1024px) { .exp-card { padding: 40px; } }
     .exp-card:hover { background: #161616; }
     .exp-icon { width: 44px; height: 44px; border: 1px solid #232323; display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 24px; transition: border-color .3s; }
@@ -145,9 +147,9 @@
     .cert-check { width: 22px; height: 22px; border: 1px solid #2A2A2A; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); transition: border-color .3s; flex-shrink: 0; }
     .cert-card:hover .cert-check { border-color: var(--accent); }
     .cert-card-name { font-size: clamp(17px, 2.5vw, 22px); font-weight: 500; color: var(--text); letter-spacing: -.02em; line-height: 1.2; margin-bottom: 8px; }
-    .cert-card-domain { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .10em; text-transform: uppercase; color: var(--text-3); }
+    .cert-card-domain { font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: .10em; text-transform: uppercase; color: var(--text-3); }
     .cert-card-footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-    .cert-badge { font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+    .cert-badge { font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
     .cert-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
 
     /* ── Contact ── */
@@ -235,8 +237,8 @@
 
     /* ── Mobile / Tablet responsive overrides ── */
     @media (max-width: 479px) {
-      .container { padding: 0 16px; }
-      .sec-label { margin-bottom: 40px; }
+      .container { padding: 0 20px; }
+      .sec-label { margin-bottom: 28px; }
       .glance-val { font-size: 16px; }
       .about-body { font-size: 15px; }
       .about-lead { font-size: clamp(1.25rem, 5vw, 1.7rem); }
@@ -248,7 +250,7 @@
       .login-modal { padding: 32px 20px; }
       .login-inp { font-size: 16px; }
       .hero-chips { gap: 6px; }
-      .hero-chip { font-size: 11px; }
+      .hero-chip { font-size: 15px; }
       .about-body { font-size: 15px; }
       .hero-statement { font-size: 1rem; line-height: 1.7; }
       .contact-sub { max-width: 100%; }
