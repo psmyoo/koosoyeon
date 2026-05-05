@@ -61,7 +61,8 @@
 
     /* ── Two column ── */
     .about-layout { display: grid; grid-template-columns: 1fr; gap: 0; padding: 40px 0; }
-    @media (min-width: 768px) { .about-layout { grid-template-columns: 280px 1fr; gap: 48px; padding: 64px 0; } }
+    @media (min-width: 768px) { .about-layout { grid-template-columns: 260px 1fr; gap: 40px; padding: 64px 0; } }
+    @media (min-width: 900px) { .about-layout { grid-template-columns: 320px 1fr; gap: 56px; } }
     @media (min-width: 1024px) { .about-layout { grid-template-columns: 400px 1fr; gap: 80px; } }
     @media (min-width: 1280px) { .about-layout { grid-template-columns: 480px 1fr; gap: 112px; } }
 
@@ -183,16 +184,13 @@
       .content-body p { font-size: 16px; }
       .contact-grid { gap: 32px; }
       .content-section { margin-bottom: 48px; }
-      .personal-card { flex-direction: column; gap: 16px; }
+      .personal-card { flex-direction: column; gap: 16px; padding: 16px; }
       .personal-card-icon { width: 36px; height: 36px; }
     }
     @media (max-width: 640px) {
+      .photo-col { margin-bottom: 32px; }
       .content-body p { font-size: 16px; }
       .content-section { margin-bottom: 48px; }
-
-    }
-    @media (max-width: 640px) {
-      .photo-col { margin-bottom: 32px; }
       .edit-bar { left: 16px; right: 16px; width: auto; transform: translateY(120px); flex-wrap: wrap; justify-content: center; padding: 12px 14px; bottom: 16px; }
       .edit-mode .edit-bar { transform: translateY(0); }
       .edit-save, .edit-links, .edit-logout { flex: 1; }
