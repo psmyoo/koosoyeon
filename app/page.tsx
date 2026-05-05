@@ -4,7 +4,6 @@ import About from '@/components/About'
 import Expertise from '@/components/Expertise'
 import TechnicalSkills from '@/components/TechnicalSkills'
 import Certifications from '@/components/Certifications'
-import Contact from '@/components/Contact'
 
 export default function Home() {
   return (
@@ -16,7 +15,6 @@ export default function Home() {
         <Expertise />
         <TechnicalSkills />
         <Certifications />
-        <Contact />
       </main>
       <footer className="border-t border-[#1C1C1C] py-8">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex items-center justify-between">

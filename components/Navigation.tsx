@@ -27,7 +27,6 @@ export default function Navigation() {
   const links = [
     { label: 'Expertise', href: sectionHref('expertise') },
     { label: 'Methods', href: sectionHref('methods') },
-    { label: 'Contact', href: sectionHref('contact') },
     { label: 'About', href: '/about' },
     // TODO: Replace '#' with the actual resume URL or file path when available
     { label: 'Resume', href: '#' },
