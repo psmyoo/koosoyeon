@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Koo Soyeon — Senior Environmental Analyst',
     description:
       'Senior Environmental Analyst specializing in air quality monitoring and pollutant analysis.',
