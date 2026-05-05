@@ -38,7 +38,7 @@ export default function Contact() {
               {...inView(0.1)}
               className="text-[clamp(1.75rem,4vw,3rem)] font-light leading-[1.2] tracking-[-0.02em] text-white mb-4 text-balance"
             >
-              Available for professional consultation and technical collaboration.
+              Available for professional opportunities and collaboration.
             </motion.p>
             <motion.p
               {...inView(0.2)}
