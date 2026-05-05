@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og'
+import { readFile } from 'fs/promises'
+import { join } from 'path'
 
 export const alt = 'Koo Soyeon — Senior Environmental Analyst'
 export const size = { width: 1200, height: 630 }
@@ -34,16 +36,9 @@ function makeParticles(): Particle[] {
   return ps
 }
 
-async function loadGoogleFont(family: string, weight: number): Promise<ArrayBuffer> {
-  const url = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:wght@${weight}`
-  const css = await fetch(url, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    },
-  }).then((r) => r.text())
-  const fontUrl = css.match(/src: url\(([^)]+)\)/)?.[1]
-  if (!fontUrl) throw new Error(`Could not find font URL for ${family} ${weight}`)
-  return fetch(fontUrl).then((r) => r.arrayBuffer())
+async function loadFont(filename: string): Promise<ArrayBuffer> {
+  const buf = await readFile(join(process.cwd(), 'public/fonts', filename))
+  return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength)
 }
 
 const ACCENT = '45,212,191'
@@ -55,9 +50,9 @@ const WAVES = [
 
 export default async function OGImage() {
   const [interBold, interRegular, spaceMono] = await Promise.all([
-    loadGoogleFont('Inter', 700),
-    loadGoogleFont('Inter', 400),
-    loadGoogleFont('Space+Mono', 400),
+    loadFont('inter-bold.ttf'),
+    loadFont('inter-regular.ttf'),
+    loadFont('space-mono.ttf'),
   ])
 
   const particles = makeParticles()

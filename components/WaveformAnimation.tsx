@@ -68,7 +68,7 @@ export default function WaveformAnimation() {
         ctx.lineJoin = 'round'
         for (let x = 0; x <= W; x += 4) {
           const y = cy + w.amp * Math.sin(x * w.freq + w.phase)
-          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
+          if (x === 0) { ctx.moveTo(x, y) } else { ctx.lineTo(x, y) }
         }
         ctx.stroke()
         w.phase += w.speed

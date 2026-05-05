@@ -67,7 +67,7 @@ export default function AboutContent() {
           <motion.p {...inView(0.08)} className="text-[15px] text-[#A3A3A3] leading-[1.8] font-light">
             Outside the laboratory, Koo Soyeon is an avid follower of baseball
             and a passionate traveler. She attends games whenever her schedule
-            permits and finds great joy in the sport's energy and competitive spirit.
+            permits and finds great joy in the sport&apos;s energy and competitive spirit.
           </motion.p>
           <motion.p {...inView(0.12)} className="text-[15px] text-[#A3A3A3] leading-[1.8] font-light">
             She is equally devoted to seeing the world, embracing every opportunity

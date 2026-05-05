@@ -18,6 +18,7 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://psmyoo.github.io/koosoyeon'),
   title: 'Koo Soyeon — Senior Environmental Analyst',
   description:
     'Senior Environmental Analyst with over eight years of experience in air quality monitoring and pollutant analysis, specializing in industrial emissions and ambient air assessment.',
