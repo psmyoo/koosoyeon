@@ -44,7 +44,7 @@ export default function Contact() {
               {...inView(0.2)}
               className="text-sm text-[#525252] font-light leading-relaxed max-w-sm"
             >
-              Reach out via LinkedIn to discuss projects, partnerships,
+              Reach out via LinkedIn to discuss projects, partnerships,<br />
               or just to say hi!
             </motion.p>
           </div>
