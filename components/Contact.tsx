@@ -42,10 +42,9 @@ export default function Contact() {
             </motion.p>
             <motion.p
               {...inView(0.2)}
-              className="text-sm text-[#525252] font-light leading-relaxed w-max"
+              className="text-sm text-[#525252] font-light leading-relaxed max-w-sm"
             >
-              Reach out via LinkedIn to discuss<br />
-              projects, partnerships, or just to say hi!
+              Reach out via LinkedIn to discuss projects or just to say hi!
             </motion.p>
           </div>
 
