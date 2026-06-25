@@ -6,7 +6,7 @@ import AboutContent from '@/components/AboutContent'
 export const metadata: Metadata = {
   title: 'About — Soyeon Koo',
   description:
-    'Senior Environmental Analyst with over eight years of experience in air quality monitoring, industrial emissions, and pollutant analysis.',
+    'Senior Environmental Analyst with over seven years of experience in air quality monitoring, industrial emissions, and pollutant analysis.',
 }
 
 export default function AboutPage() {

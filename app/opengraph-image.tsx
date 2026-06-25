@@ -205,7 +205,7 @@ export default async function OGImage() {
               lineHeight: 1.5,
             }}
           >
-            8+ years at the intersection of environmental science and industrial compliance.
+            7+ years at the intersection of environmental science and industrial compliance.
           </p>
         </div>
       </div>

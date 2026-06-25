@@ -62,7 +62,7 @@ export default function Hero() {
           {...fadeUp(0.75)}
           className="text-xl md:text-2xl text-[#A3A3A3] font-light max-w-lg leading-relaxed"
         >
-          8+ years at the intersection of environmental science
+          7+ years at the intersection of environmental science
           and industrial compliance.
         </motion.p>
       </div>

@@ -27,7 +27,7 @@ export default function AboutContent() {
           {...inView(0.08)}
           className="text-[clamp(1.3rem,2.5vw,1.65rem)] font-light leading-[1.45] tracking-[-0.01em] text-white mb-8 text-balance"
         >
-          Over eight years spent at the boundary of science and
+          Over seven years spent at the boundary of science and
           industrial accountability.
         </motion.p>
 
