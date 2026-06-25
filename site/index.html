@@ -297,7 +297,7 @@
           <ul class="nav-links" role="list">
             <li><a href="#hero" class="active">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="#" data-link-key="resume-url">Resume</a></li>
+            <li><a href="https://drive.google.com/file/d/1PvOCiwqIH7CpPqytcMqzy2g1H3GhSLwS/view?usp=drive_link" target="_blank" rel="noopener noreferrer" data-link-key="resume-url">Resume</a></li>
           </ul>
         </nav>
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -314,7 +314,7 @@
       <ul class="mob-links" role="list">
         <li><a href="#hero" class="active" onclick="closeMenu()">Home</a></li>
         <li><a href="about.html" onclick="closeMenu()">About</a></li>
-        <li><a href="#" data-link-key="resume-url" onclick="closeMenu()">Resume</a></li>
+        <li><a href="https://drive.google.com/file/d/1PvOCiwqIH7CpPqytcMqzy2g1H3GhSLwS/view?usp=drive_link" target="_blank" rel="noopener noreferrer" data-link-key="resume-url" onclick="closeMenu()">Resume</a></li>
       </ul>
     </nav>
     <p class="mob-footer">Soyeon Koo — Senior Environmental Analyst</p>
@@ -760,12 +760,15 @@
 
     async function _fetchLiveContent(){
       try {
-        const res=await fetch(_GH_RAW+'?_='+Date.now());
+        const res=await fetch(_GH_RAW+'?_='+Date.now(),{cache:'no-store'});
         if(!res.ok) return;
         const d=await res.json();
         if(d.content) localStorage.setItem(_STORE,JSON.stringify(d.content));
         if(d.struct) localStorage.setItem(_STRUCT,JSON.stringify(d.struct));
-        if(d.links) localStorage.setItem(_LINKS,JSON.stringify(d.links));
+        const _l=Object.assign({},d.links||{});
+        if(d['resume-url']) _l['resume-url']=d['resume-url'];
+        if(d['linkedin-url']) _l['linkedin-url']=d['linkedin-url'];
+        if(Object.keys(_l).length) localStorage.setItem(_LINKS,JSON.stringify(_l));
         _loadStructure(); _loadContent(); _loadLinks();
       } catch(e){}
     }
