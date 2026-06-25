@@ -36,16 +36,16 @@ export default function About() {
               {...inView(0.1)}
               className="text-[clamp(1.5rem,3.5vw,2.4rem)] font-light leading-[1.3] tracking-[-0.01em] text-white mb-10 text-balance"
             >
-              Soyeon Koo is a Senior Environmental Analyst with over seven years
+              I'm a Senior Environmental Analyst with over seven years
               of experience in air quality monitoring and pollutant analysis.
             </motion.p>
             <motion.p
               {...inView(0.2)}
               className="text-base md:text-[17px] text-[#A3A3A3] leading-[1.75] max-w-2xl"
             >
-              Specializing in industrial emissions and ambient air assessment, she applies
+              Specializing in industrial emissions and ambient air assessment, I apply
               rigorous analytical methodologies to deliver data that withstands regulatory
-              scrutiny. Her work spans the full measurement lifecycle — from instrument
+              scrutiny. My work spans the full measurement lifecycle — from instrument
               calibration and sample collection through laboratory analysis, quality
               assurance, and compliance reporting.
             </motion.p>

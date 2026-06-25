@@ -7,8 +7,8 @@
     "chip-2": "Industrial Emissions",
     "chip-3": "Compliance",
     "hero-statement": "7+ years at the intersection of environmental science and industrial compliance — driven by curiosity, precision, and a genuine love for the work.",
-    "about-lead": "Soyeon Koo is a <span style=\"color:var(--accent);font-weight:600\">Senior Environmental Analyst</span> with over seven years of experience in air quality monitoring and pollutant analysis.",
-    "about-body": "Specializing in industrial emissions and ambient air assessment, she applies rigorous analytical methodologies to deliver data that withstands regulatory scrutiny. Her work spans the full measurement lifecycle — from instrument calibration and sample collection through <span class=\"kw\">laboratory analysis</span>, <span class=\"kw\">quality assurance</span>, and <span class=\"kw\">compliance reporting</span>.",
+    "about-lead": "I'm a <span style=\"color:var(--accent);font-weight:600\">Senior Environmental Analyst</span> with over seven years of experience in air quality monitoring and pollutant analysis.",
+    "about-body": "Specializing in industrial emissions and ambient air assessment, I apply rigorous analytical methodologies to deliver data that withstands regulatory scrutiny. My work spans the full measurement lifecycle — from instrument calibration and sample collection through <span class=\"kw\">laboratory analysis</span>, <span class=\"kw\">quality assurance</span>, and <span class=\"kw\">compliance reporting</span>.",
     "g-exp": "7+ years",
     "g-spec": "Air quality &amp; industrial emissions",
     "g-focus": "Measurement precision",
@@ -47,9 +47,9 @@
     "pro-body-1": "I'm an environmental analyst, which mostly means I measure things people can't see. I test for pollutants like aldehydes, phenols, hydrogen chloride, VOCs, and trace metals — at industrial sites and across monitoring networks — and trace them back to where they came from.",
     "pro-body-2": "I work hands-on with ICP, GC, AA, and GC-MS instruments, and what I care about most is accuracy: getting the data right matters more to me than getting it fast. It's detailed, patient work, and I like that about it.",
     "p-baseball-title": "Passionate Fan of LG Twins",
-    "p-baseball-body": "An avid lover of the baseball team, LG Twins, Soyeon attends and follows every game whenever the schedule allows. She believes she was born to be their follower.",
+    "p-baseball-body": "An avid lover of the baseball team, LG Twins, I attend and follow every game whenever the schedule allows. I believe I was born to be their follower.",
     "p-travel-title": "Travel",
-    "p-travel-body": "Seeing the world helps Soyeon to see herself better. Discovering new cultures and landscapes around the world is not just travel: it's an exploration to her."
+    "p-travel-body": "Seeing the world helps me see myself better. Discovering new cultures and landscapes around the world is not just travel: it's an exploration to me."
   },
   "struct": {}
 }

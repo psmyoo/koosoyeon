@@ -33,18 +33,18 @@ export default function AboutContent() {
 
         <div className="space-y-5">
           <motion.p {...inView(0.12)} className="text-[15px] text-[#A3A3A3] leading-[1.8] font-light">
-            Soyeon Koo has built her career around the precise measurement
+            I've built my career around the precise measurement
             of what cannot be seen. Working across industrial sites and ambient
-            monitoring networks, she applies validated analytical methods to
+            monitoring networks, I apply validated analytical methods to
             characterize pollutant concentrations, trace emission sources, and
             verify compliance with environmental standards.
           </motion.p>
           <motion.p {...inView(0.16)} className="text-[15px] text-[#A3A3A3] leading-[1.8] font-light">
-            Her expertise spans the detection of aldehydes, phenols, hydrogen
+            My expertise spans the detection of aldehydes, phenols, hydrogen
             chloride, volatile organic compounds, and trace metals — pollutant
             classes that demand both methodological rigor and careful
-            interpretation. She operates instrumentation including ICP, GC,
-            AA, and GC-MS systems, and maintains a consistent focus on data
+            interpretation. I operate instrumentation including ICP, GC,
+            AA, and GC-MS systems, and maintain a consistent focus on data
             integrity throughout the analytical process.
           </motion.p>
         </div>
@@ -65,12 +65,12 @@ export default function AboutContent() {
 
         <div className="space-y-5">
           <motion.p {...inView(0.08)} className="text-[15px] text-[#A3A3A3] leading-[1.8] font-light">
-            Outside the laboratory, Soyeon Koo is an avid follower of baseball
-            and a passionate traveler. She attends games whenever her schedule
-            permits and finds great joy in the sport&apos;s energy and competitive spirit.
+            Outside the laboratory, I'm an avid follower of baseball
+            and a passionate traveler. I attend games whenever my schedule
+            permits and find great joy in the sport&apos;s energy and competitive spirit.
           </motion.p>
           <motion.p {...inView(0.12)} className="text-[15px] text-[#A3A3A3] leading-[1.8] font-light">
-            She is equally devoted to seeing the world, embracing every opportunity
+            I'm equally devoted to seeing the world, embracing every opportunity
             to explore new destinations, cultures, and landscapes.
           </motion.p>
         </div>
