@@ -436,8 +436,8 @@
     function _loadLinks(){
       try {
         const d=JSON.parse(localStorage.getItem(_LINKS)||'{}');
-        if(d['linkedin-url']) document.querySelectorAll('[data-link-key="linkedin-url"]').forEach(a=>a.href=d['linkedin-url']);
-        if(d['resume-url']) document.querySelectorAll('[data-link-key="resume-url"]').forEach(a=>{
+        if(/^https?:/i.test(d['linkedin-url']||'')) document.querySelectorAll('[data-link-key="linkedin-url"]').forEach(a=>a.href=d['linkedin-url']);
+        if(/^https?:/i.test(d['resume-url']||'')) document.querySelectorAll('[data-link-key="resume-url"]').forEach(a=>{
           a.href=d['resume-url']; a.target='_blank'; a.rel='noopener noreferrer';
         });
       } catch(e){}
