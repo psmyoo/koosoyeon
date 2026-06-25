@@ -19,7 +19,7 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://psmyoo.github.io/koosoyeon'),
-  title: 'Koo Soyeon — Senior Environmental Analyst',
+  title: 'Soyeon Koo — Senior Environmental Analyst',
   description:
     'Senior Environmental Analyst with over eight years of experience in air quality monitoring and pollutant analysis, specializing in industrial emissions and ambient air assessment.',
   keywords: [
@@ -32,10 +32,10 @@ export const metadata: Metadata = {
     'ambient air assessment',
     'environmental science',
   ],
-  authors: [{ name: 'Koo Soyeon' }],
+  authors: [{ name: 'Soyeon Koo' }],
   robots: 'index, follow',
   openGraph: {
-    title: 'Koo Soyeon — Senior Environmental Analyst',
+    title: 'Soyeon Koo — Senior Environmental Analyst',
     description:
       'Senior Environmental Analyst specializing in air quality monitoring and pollutant analysis.',
     type: 'website',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Koo Soyeon — Senior Environmental Analyst',
+    title: 'Soyeon Koo — Senior Environmental Analyst',
     description:
       'Senior Environmental Analyst specializing in air quality monitoring and pollutant analysis.',
   },

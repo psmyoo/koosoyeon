@@ -1,6 +1,6 @@
-# Koo Soyeon — Portfolio
+# Soyeon Koo — Portfolio
 
-Personal portfolio website for Koo Soyeon, Senior Environmental Analyst. Built with Next.js 15, TypeScript, Tailwind CSS, and Framer Motion.
+Personal portfolio website for Soyeon Koo, Senior Environmental Analyst. Built with Next.js 15, TypeScript, Tailwind CSS, and Framer Motion.
 
 ## Prerequisites
 

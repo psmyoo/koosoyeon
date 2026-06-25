@@ -24,12 +24,11 @@ export default function Navigation() {
 
   const sectionHref = (id: string) => (isHome ? `#${id}` : `/#${id}`)
 
-  const links = [
+  const links: { label: string; href: string; external?: boolean }[] = [
     { label: 'Expertise', href: sectionHref('expertise') },
     { label: 'Methods', href: sectionHref('methods') },
     { label: 'About', href: '/about' },
-    // TODO: Replace '#' with the actual resume URL or file path when available
-    { label: 'Resume', href: '#' },
+    { label: 'Resume', href: 'https://drive.google.com/file/d/1PvOCiwqIH7CpPqytcMqzy2g1H3GhSLwS/view?usp=drive_link', external: true },
   ]
 
   return (
@@ -52,7 +51,7 @@ export default function Navigation() {
             className="font-mono text-sm font-bold tracking-[0.25em] text-accent hover:text-white transition-colors relative z-[60]"
             aria-label="Home"
           >
-            KS
+            SK
           </Link>
 
           {/* Desktop nav */}
@@ -62,6 +61,7 @@ export default function Navigation() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
+                    {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     className={`font-mono text-[11px] tracking-[0.18em] uppercase transition-colors ${
                       pathname === link.href
                         ? 'text-white'
@@ -126,6 +126,7 @@ export default function Navigation() {
                   >
                     <Link
                       href={link.href}
+                      {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       onClick={() => setMenuOpen(false)}
                       className={`font-mono text-[1.6rem] tracking-[0.1em] uppercase transition-colors ${
                         pathname === link.href
@@ -141,7 +142,7 @@ export default function Navigation() {
             </nav>
 
             <p className="absolute bottom-10 left-8 font-mono text-[10px] tracking-[0.2em] text-[#2A2A2A] uppercase">
-              Koo Soyeon — Senior Environmental Analyst
+              Soyeon Koo — Senior Environmental Analyst
             </p>
           </motion.div>
         )}

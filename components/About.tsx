@@ -36,7 +36,7 @@ export default function About() {
               {...inView(0.1)}
               className="text-[clamp(1.5rem,3.5vw,2.4rem)] font-light leading-[1.3] tracking-[-0.01em] text-white mb-10 text-balance"
             >
-              Koo Soyeon is a Senior Environmental Analyst with over eight years
+              Soyeon Koo is a Senior Environmental Analyst with over eight years
               of experience in air quality monitoring and pollutant analysis.
             </motion.p>
             <motion.p

@@ -4,7 +4,7 @@ import Navigation from '@/components/Navigation'
 import AboutContent from '@/components/AboutContent'
 
 export const metadata: Metadata = {
-  title: 'About — Koo Soyeon',
+  title: 'About — Soyeon Koo',
   description:
     'Senior Environmental Analyst with over eight years of experience in air quality monitoring, industrial emissions, and pollutant analysis.',
 }
@@ -23,7 +23,7 @@ export default function AboutPage() {
             </span>
             <div className="w-8 h-px bg-[#2A2A2A]" />
             <span className="font-mono text-[10px] tracking-[0.25em] text-[#525252] uppercase">
-              Koo Soyeon
+              Soyeon Koo
             </span>
           </div>
 
@@ -36,7 +36,7 @@ export default function AboutPage() {
                 <div className="relative w-full aspect-[4/3] sm:aspect-[3/4] overflow-hidden bg-[#111111]">
                   <Image
                     src="/profile.avif"
-                    alt="Koo Soyeon, Senior Environmental Analyst"
+                    alt="Soyeon Koo, Senior Environmental Analyst"
                     fill
                     sizes="(max-width: 1024px) 100vw, 480px"
                     className="object-cover object-top grayscale"
@@ -52,7 +52,7 @@ export default function AboutPage() {
                 {/* Name block below photo */}
                 <div className="mt-6 border-t border-[#1C1C1C] pt-6">
                   <p className="text-white font-semibold tracking-[-0.01em] mb-1">
-                    Koo Soyeon
+                    Soyeon Koo
                   </p>
                   <p className="font-mono text-[11px] tracking-[0.15em] text-[#525252] uppercase">
                     Senior Environmental Analyst
@@ -71,7 +71,7 @@ export default function AboutPage() {
       <footer className="border-t border-[#1C1C1C] py-8">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 flex items-center justify-between">
           <span className="font-mono text-[10px] tracking-[0.2em] text-[#525252] uppercase">
-            Koo Soyeon
+            Soyeon Koo
           </span>
           <span className="font-mono text-[10px] tracking-[0.2em] text-[#525252] uppercase">
             Senior Environmental Analyst

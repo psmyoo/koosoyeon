@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
-export const alt = 'Koo Soyeon — Senior Environmental Analyst'
+export const alt = 'Soyeon Koo — Senior Environmental Analyst'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -168,7 +168,7 @@ export default async function OGImage() {
               whiteSpace: 'nowrap',
             }}
           >
-            KOO SOYEON
+            SOYEON KOO
           </h1>
 
           <div

@@ -171,7 +171,7 @@ const svg = await satori(
                     marginBottom: 36,
                     whiteSpace: 'nowrap',
                   },
-                  children: 'KOO SOYEON',
+                  children: 'SOYEON KOO',
                 },
               },
               {

@@ -44,7 +44,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="text-[clamp(2rem,8vw,8rem)] font-bold leading-[0.92] tracking-[-0.03em] text-white whitespace-nowrap"
           >
-            KOO SOYEON
+            SOYEON KOO
           </motion.h1>
         </div>
 
